@@ -1,0 +1,12 @@
+{
+  "enableSlides": true,
+  "enableAgenda": true,
+  "enableEvents": true,
+  "enableMap": true,
+  "enableContact": true,
+  "enablePhotoGrid": false,
+  "enableOffering": true,
+  "enableQuote": false,
+  "enableIntro": true,
+  "enableSocials": true
+}

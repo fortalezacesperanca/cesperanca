@@ -1,0 +1,16 @@
+[
+  {
+    "dayOfWeek": "quarta",
+    "time": "19:30",
+    "eventName": "Culto",
+    "description": "No auditório da Comunidade Esperança",
+    "eventType": "common"
+  },
+  {
+    "dayOfWeek": "domingo",
+    "time": "18:30",
+    "eventName": "Culto",
+    "description": "No auditório da Comunidade Esperança",
+    "eventType": "variant"
+  }
+]

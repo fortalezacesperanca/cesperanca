@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Culto da Virada",
+    "date": "31/12/2025",
+    "time": "22:00",
+    "description": "No auditório da Comunidade Esperança",
+    "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque leo ante, molestie et consectetur eget, volutpat id massa. Quisque sodales nisl eget augue fringilla accumsan. Nulla consectetur sollicitudin risus non ornare. Morbi mattis nibh ligula, sit amet consectetur arcu tristique eu. Ut sit amet felis sit amet sapien auctor ultrices. Aenean condimentum eros in feugiat consectetur. Nunc commodo nisl quis sem semper rhoncus. Mauris in malesuada nibh. Fusce non ex vel quam pharetra imperdiet vel eu enim. Aliquam gravida est ante, pellentesque porttitor ipsum pulvinar id. Pellentesque pulvinar rhoncus urna quis porttitor. Nam varius ut ligula id semper.",
+    "address": "R. Chico Lemos, 547 - Cid. dos Funcionários, Fortaleza",
+    "eventType": "special",
+    "image": "images/galaxy.jpg",
+    "isEnabled": true
+  },
+  {
+    "name": "Conferencia Dia 1",
+    "date": "01/01/2026",
+    "time": "18:30",
+    "description": "Tema: Transformando Vidas - Pr. Valgledson Santos",
+    "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque leo ante, molestie et consectetur eget, volutpat id massa. Quisque sodales nisl eget augue fringilla accumsan. Nulla consectetur sollicitudin risus non ornare. Morbi mattis nibh ligula, sit amet consectetur arcu tristique eu. Ut sit amet felis sit amet sapien auctor ultrices. Aenean condimentum eros in feugiat consectetur. Nunc commodo nisl quis sem semper rhoncus. Mauris in malesuada nibh. Fusce non ex vel quam pharetra imperdiet vel eu enim. Aliquam gravida est ante, pellentesque porttitor ipsum pulvinar id. Pellentesque pulvinar rhoncus urna quis porttitor. Nam varius ut ligula id semper.",
+    "address": "R. Chico Lemos, 547 - Cid. dos Funcionários, Fortaleza",
+    "eventType": "common",
+    "image": "images/galaxy.jpg",
+    "isEnabled": true
+  }
+]

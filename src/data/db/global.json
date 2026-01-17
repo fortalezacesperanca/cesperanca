@@ -1,0 +1,27 @@
+{
+  "title": "Comunidade Esperança Fortaleza",
+  "subtitle": "Transformando Vidas pelo Poder de Deus!",
+  "address": "R. Chico Lemos, 547 - Cidade dos Funcionários, Fortaleza - CE, 60822-785",
+  "phone": "(85) 9 9999-9999",
+  "email": "email@email.com",
+  "pix": {
+    "key": "85981361533",
+    "bankName": "323 Mercado Pago IP LTDA",
+    "accountName": "Comunidade Esperanca de Fortaleza"
+  },
+  "socials": [
+    {
+      "name": "Instagram",
+      "link": "https://www.instagram.com/cesperancafortal/",
+      "isEnabled": true
+    },
+    {
+      "name": "YouTube",
+      "link": "https://www.youtube.com/c/ComunidadeEsperan%C3%A7aFortaleza",
+      "isEnabled": true
+    }
+  ],
+  "meta": {
+    "description": "Site da Comunidade Esperança Fortaleza"
+  }
+}
