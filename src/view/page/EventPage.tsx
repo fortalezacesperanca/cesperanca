@@ -31,8 +31,8 @@ export default function EventPage() {
 
   const params = useParams();
 
-  const [index] = params.eventURI!.split(':');
-  const event = events[parseInt(index)];
+  const [index, name] = params.eventURI!.split(':');
+  const event = events.filter((e) => e.name == name)[0];
 
   return (
     <Flex direction={'column'}>
