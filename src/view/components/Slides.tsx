@@ -10,6 +10,24 @@ export const Slides = ({
   children: React.ReactNode;
   slideCount: number;
 }) => {
+  // const [page, setPage] = useState(0);
+
+  // const next = useCallback(() => {
+  //   setPage((p) => (p + 1 === slideCount ? 0 : p + 1));
+  // }, [slideCount]);
+
+  // const prev = useCallback(() => {
+  //   setPage((p) => (p === 0 ? slideCount - 1 : p - 1));
+  // }, [slideCount]);
+
+  // useEffect(() => {
+  //   const timeout = setInterval(() => {
+  //     next();
+  //   }, 4000);
+
+  //   return () => clearInterval(timeout);
+  // }, [next]);
+
   return (
     <Carousel.Root
       slideCount={slideCount}
@@ -17,9 +35,10 @@ export const Slides = ({
       mx="auto"
       allowMouseDrag
       autoplay={{
-        delay: 8000,
+        delay: 5000,
       }}
-      defaultPage={0}
+      // page={page}
+      // onPageChange={(e) => setPage(e.page)}
     >
       <Carousel.ItemGroup boxShadow={'lg'}>{children}</Carousel.ItemGroup>
 

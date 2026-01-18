@@ -11,6 +11,10 @@ export default function SlidesWidgetV2({ path }: { path: string }) {
     return `${basename}${path}`;
   });
 
+  if (images.length == 0) {
+    return <></>;
+  }
+
   return (
     <Box
       position={'relative'}
