@@ -105,7 +105,6 @@ export function EventsList({ events }: { events: Model.Events }) {
                 </Box>
                 <Flex
                   px={'4'}
-                  p
                   direction={{
                     base: 'row',
                     md: 'column',
