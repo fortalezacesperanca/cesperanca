@@ -71,7 +71,7 @@ export function EventsList({ events }: { events: Model.Events }) {
             shadow={'md'}
           >
             <Flex
-              padding={4}
+              // padding={4}
               width="full"
             >
               <Flex
@@ -98,17 +98,17 @@ export function EventsList({ events }: { events: Model.Events }) {
                       alignSelf={'center'}
                       maxWidth={{
                         base: '100%',
-                        md: '320px',
+                        md: '400px',
                       }}
                       aspectRatio={2 / 1}
-                      borderRadius={'md'}
+                      // borderRadius={'md'}
                       path={event.image}
                       alt={`${event.name} ${event.description}`}
                     />
                   </Center>
                 </Box>
                 <Flex
-                  py={'2'}
+                  // py={'2'}
                   px={'4'}
                   direction={{
                     base: 'row',
@@ -117,29 +117,37 @@ export function EventsList({ events }: { events: Model.Events }) {
                   justifyContent={'center'}
                   textAlign={'center'}
                   fontFamily={'FontHeading'}
-                  fontSize={'2xl'}
+                  fontSize={'3xl'}
                   color={{
                     _dark: 'gray.300',
-                    _light: 'primary.600',
+                    // _light: 'primary.600',
+                    _light: 'gray.700',
                   }}
                   gap={2}
                 >
                   <Box>{getDate(event.date).day}</Box>
-                  <Box>{getDate(event.date).monthName}</Box>
+                  <Box textTransform={'uppercase'}>
+                    {getDate(event.date).monthName}
+                  </Box>
                   <Box>{getDate(event.date).yearShort}</Box>
                 </Flex>
 
                 <Card.Body
+                  // p={6}
+                  // p={0}
                   className="card.body"
                   flexDirection={'column'}
                 >
                   <Card.Title
-                    mb={2}
-                    fontSize={'lg'}
+                    mb={4}
+                    fontSize={'2xl'}
                   >
                     {event.name}
                   </Card.Title>
-                  <Box color={'fg'}>
+                  <Box
+                    color={'fg'}
+                    // p={6}
+                  >
                     <CardLine text={event.description} />
                     <CardLine
                       text={event.time}
@@ -184,7 +192,9 @@ function getDate(dateString: string) {
   date.setMonth(parseInt(month));
   date.setFullYear(parseInt(yearLong));
 
-  const monthName = date.toLocaleString('default', { month: 'short' });
+  const monthName = date
+    .toLocaleString('default', { month: 'long' })
+    .substring(0, 3);
   const yearShort = date.toLocaleString('default', { year: '2-digit' });
   return { day, month, monthName, yearLong, yearShort };
 }
@@ -196,7 +206,14 @@ function CardLine({ text, icon }: any) {
       justifyContent={'left'}
       alignItems={'center'}
     >
-      {icon && <Icon marginEnd={'2'}>{icon}</Icon>}
+      {icon && (
+        <Icon
+          marginEnd={'2'}
+          color="accent.500"
+        >
+          {icon}
+        </Icon>
+      )}
       <Text
         display={'inline'}
         fontSize={'md'}

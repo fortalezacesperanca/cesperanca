@@ -14,27 +14,6 @@ import QuoteWidget from '../widgets/QuoteWidget/QuoteWidget.tsx';
 import SlidesWidgetV2 from '../widgets/Slides/SlidesWidgetV2.tsx';
 import SocialsWidgetV3 from '../widgets/Socials/SocialsWidgetV3.tsx';
 
-// const AgendaWidgetV2 = lazy(
-//   () => import('../widgets/Agenda/AgendaWidgetV2.tsx'),
-// );
-// const AgendaWidget = lazy(() => import('../widgets/Agenda/AgendaWidget.tsx'));
-// const ContactWidget = lazy(
-//   () => import('../widgets/Contact/ContactWidget.tsx'),
-// );
-// const EventsWidget = lazy(() => import('../widgets/Events/EventsWidget.tsx'));
-// const EventsWidgetV2 = lazy(
-//   () => import('../widgets/Events/EventsWidgetV2.tsx'),
-// );
-// const IntroWidget = lazy(() => import('../widgets/Intro/IntroWidget.tsx'));
-// const MapWidget = lazy(() => import('../widgets/Map/MapWidget.tsx'));
-// const PixWidget = lazy(() => import('../widgets/Pix/PixWidget.tsx'));
-// const QuoteWidget = lazy(
-//   () => import('../widgets/QuoteWidget/QuoteWidget.tsx'),
-// );
-// const SocialsWidget = lazy(
-//   () => import('../widgets/Socials/SocialsWidget.tsx'),
-// );
-
 export default function MainPage() {
   var [config] = useJSON<Model.Config>({
     path: 'db/config.json',
@@ -45,7 +24,7 @@ export default function MainPage() {
     <Flex direction={'column'}>
       {config.enableSlides && (
         <FlexContainer maxWidth={'full'}>
-          <SlidesWidgetV2 path={'db/slide.json'} />
+          <SlidesWidgetV2 path={'db/slides.json'} />
         </FlexContainer>
       )}
       {config.enableIntro && (
@@ -61,16 +40,6 @@ export default function MainPage() {
           />
         </FlexContainer>
       )}
-      {/* <FlexContainer hidden={ !config.enablePhotoGrid }>
-        <PhotoGridWidgetURL path="db/photo_grid_instagram.json" />
-
-        <CallToAction
-          title={ "Veja mais em nosso Instagram" }
-          buttonText={ `@${global?.socials?.instagram?.name}` }
-          buttonIcon={ <RiInstagramFill /> }
-          buttonLink={ global?.socials?.instagram?.link }
-        />
-      </FlexContainer> */}
       <Flex
         gap={6}
         direction={'column'}
