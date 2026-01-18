@@ -125,16 +125,23 @@ export function EventsList({ events }: { events: Model.Events }) {
                   }}
                   gap={2}
                 >
-                  <Box>{getDate(event.date).day}</Box>
-                  <Box textTransform={'uppercase'}>
-                    {getDate(event.date).monthName}
+                  <Box
+                    textTransform={'uppercase'}
+                    color={{
+                      _dark: 'gray.300',
+                      _light: 'primary.600',
+                    }}
+                  >
+                    {getDate(event.date).dayOfWeek}
                   </Box>
-                  <Box>{getDate(event.date).yearShort}</Box>
+                  <Box>{getDate(event.date).dayNumber}</Box>
+                  <Box textTransform={'uppercase'}>
+                    {getDate(event.date).month}
+                  </Box>
+                  {/* <Box>{getDate(event.date).yearShort}</Box> */}
                 </Flex>
 
                 <Card.Body
-                  // p={6}
-                  // p={0}
                   className="card.body"
                   flexDirection={'column'}
                 >
@@ -186,17 +193,20 @@ export function EventsList({ events }: { events: Model.Events }) {
 }
 
 function getDate(dateString: string) {
-  const [day, month, yearLong] = dateString.split('/');
+  const [dayNumber, monthNumber, yearNumber] = dateString.split('/');
   const date = new Date();
-  date.setDate(parseInt(day));
-  date.setMonth(parseInt(month));
-  date.setFullYear(parseInt(yearLong));
+  date.setDate(parseInt(dayNumber));
+  date.setMonth(parseInt(monthNumber));
+  date.setFullYear(parseInt(yearNumber));
 
-  const monthName = date
+  const month = date
     .toLocaleString('default', { month: 'long' })
     .substring(0, 3);
   const yearShort = date.toLocaleString('default', { year: '2-digit' });
-  return { day, month, monthName, yearLong, yearShort };
+  const dayOfWeek = date
+    .toLocaleString('default', { weekday: 'long' })
+    .substring(0, 3);
+  return { dayNumber, monthNumber, month, yearShort, dayOfWeek };
 }
 
 function CardLine({ text, icon }: any) {
