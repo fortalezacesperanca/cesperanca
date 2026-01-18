@@ -8,6 +8,11 @@ import {
   SimpleGrid,
   Text,
 } from '@chakra-ui/react';
+import dayjs from 'dayjs';
+import 'dayjs/locale/pt-br';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import updateLocale from 'dayjs/plugin/updateLocale';
+import weekday from 'dayjs/plugin/weekday';
 import {
   RiArrowRightLine,
   RiCalendar2Fill,
@@ -20,6 +25,37 @@ import { Image } from '../../components/Image';
 import { Widget } from '../../components/Widget';
 import { useJSON } from '../../hooks/useJSON';
 import { getUniqueEventURI, Routes } from '../../routes/routes';
+
+dayjs.extend(weekday);
+dayjs.extend(updateLocale);
+dayjs.extend(customParseFormat);
+dayjs.locale('pt-br');
+
+// dayjs.updateLocale('pt', {
+//   months: [
+//     'Janeiro',
+//     'Fevereiro',
+//     'Março',
+//     'Abril',
+//     'Maio',
+//     'Junho',
+//     'Julho',
+//     'Agosto',
+//     'Setembro',
+//     'Outubro',
+//     'Novembro',
+//     'Dezembro',
+//   ],
+//   weekdays: [
+//     'Domingo',
+//     'Segunda',
+//     'Terça',
+//     'Quarta',
+//     'Quinta',
+//     'Sexta',
+//     'Sábado',
+//   ],
+// });
 
 export default function EventsWidgetV3({
   json,
@@ -194,19 +230,10 @@ export function EventsList({ events }: { events: Model.Events }) {
 
 function getDate(dateString: string) {
   const [dayNumber, monthNumber, yearNumber] = dateString.split('/');
-  const date = new Date();
-  date.setDate(parseInt(dayNumber));
-  date.setMonth(parseInt(monthNumber));
-  date.setFullYear(parseInt(yearNumber));
-
-  const month = date
-    .toLocaleString('default', { month: 'long' })
-    .substring(0, 3);
-  const yearShort = date.toLocaleString('default', { year: '2-digit' });
-  const dayOfWeek = date
-    .toLocaleString('default', { weekday: 'long' })
-    .substring(0, 3);
-  return { dayNumber, monthNumber, month, yearShort, dayOfWeek };
+  const date = dayjs(`${yearNumber}-${monthNumber}-${dayNumber}`, 'YYYY-MM-DD');
+  const dayOfWeek = date.format('dddd').toUpperCase().substring(0, 3);
+  const month = date.format('MMM');
+  return { dayNumber, dayOfWeek, month };
 }
 
 function CardLine({ text, icon }: any) {
