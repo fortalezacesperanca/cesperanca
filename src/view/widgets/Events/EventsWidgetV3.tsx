@@ -147,7 +147,7 @@ export function EventsList({ events }: { events: Model.Events }) {
                 >
                   <Card.Title
                     mb={4}
-                    fontSize={'2xl'}
+                    fontSize={'xl'}
                   >
                     {event.name}
                   </Card.Title>
