@@ -83,6 +83,7 @@ export const NavigationWidget = ({ path }: { path: string }) => {
                 bg={'transparent'}
                 color="gray.50"
                 fontFamily={'FontHeading'}
+                fontWeight={'bold'}
                 fontSize={'md'}
                 paddingY={2}
                 _hover={{

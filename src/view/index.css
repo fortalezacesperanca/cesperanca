@@ -10,7 +10,7 @@ html {
 @font-face {
   font-family: 'FontHeading';
   src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
-  font-weight: bold;
+  /* font-weight: bold; */
   font-display: swap;
 }
 @font-face {

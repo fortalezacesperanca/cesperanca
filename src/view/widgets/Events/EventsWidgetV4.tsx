@@ -21,7 +21,7 @@ import { Widget } from '../../components/Widget';
 import { useJSON } from '../../hooks/useJSON';
 import { getUniqueEventURI, Routes } from '../../routes/routes';
 
-export default function EventsWidgetV3({
+export default function EventsWidgetV4({
   json,
   showActionButton = true,
 }: {
@@ -44,10 +44,10 @@ export default function EventsWidgetV3({
         gap={6}
         columns={{
           base: 1,
-          sm: 1,
-          md: 1,
-          lg: 1,
-          xl: 1,
+          sm: 2,
+          md: 3,
+          lg: 4,
+          xl: 4,
         }}
       >
         <EventsList events={events} />
@@ -76,15 +76,10 @@ export function EventsList({ events }: { events: Model.Events }) {
                 width="full"
                 flexDirection={{
                   base: 'column',
-                  md: 'row',
                 }}
               >
                 <Box
                   className="card.image"
-                  paddingRight={{
-                    base: 0,
-                    md: 4,
-                  }}
                   paddingBottom={{
                     base: 0,
                     md: 0,
@@ -95,7 +90,6 @@ export function EventsList({ events }: { events: Model.Events }) {
                       alignSelf={'center'}
                       maxWidth={{
                         base: '100%',
-                        md: '400px',
                       }}
                       aspectRatio={2 / 1}
                       path={event.image}
@@ -105,44 +99,46 @@ export function EventsList({ events }: { events: Model.Events }) {
                 </Box>
                 <Flex
                   px={'4'}
-                  p
                   direction={{
-                    base: 'row',
-                    md: 'column',
+                    base: 'column',
                   }}
                   justifyContent={'center'}
                   textAlign={'center'}
                   fontFamily={'FontHeading'}
-                  fontWeight={'bold'}
-                  fontSize={'3xl'}
+                  fontSize={'2xl'}
                   color={{
                     _dark: 'gray.300',
                     _light: 'gray.700',
                   }}
                   gap={2}
                 >
-                  <Box
-                    textTransform={'uppercase'}
-                    color={{
-                      _dark: 'gray.300',
-                      _light: 'primary.600',
-                    }}
-                  >
-                    {getDate(event.date).dayOfWeek}
+                  <Box py={4}>
+                    <Text
+                      fontWeight={'bold'}
+                      textTransform={'uppercase'}
+                      color={{
+                        _dark: 'gray.300',
+                        _light: 'primary.600',
+                      }}
+                    >
+                      {getDate(event.date).weekDay}
+                    </Text>
+                    <Text
+                      fontWeight={'medium'}
+                      color={{
+                        _dark: 'gray.300',
+                        _light: 'gray.600',
+                      }}
+                    >
+                      {getDate(event.date).dayAndMonth}
+                    </Text>
                   </Box>
-                  <Box fontWeight={'medium'}>
-                    {getDate(event.date).dayNumber}
-                  </Box>
-                  <Box fontWeight={'medium'}>{getDate(event.date).month}</Box>
+                  <Box></Box>
+                  <Box textTransform={'uppercase'}></Box>
                 </Flex>
 
                 <Card.Body
-                  pt={
-                    {
-                      // base: 0,
-                      // md: 6,
-                    }
-                  }
+                  pt={0}
                   className="card.body"
                   flexDirection={'column'}
                 >
@@ -152,10 +148,7 @@ export function EventsList({ events }: { events: Model.Events }) {
                   >
                     {event.name}
                   </Card.Title>
-                  <Box
-                    color={'fg'}
-                    // p={6}
-                  >
+                  <Box color={'fg'}>
                     <CardLine text={event.description} />
                     <CardLine
                       text={event.time}
@@ -200,14 +193,19 @@ function getDate(dateString: string) {
   date.setMonth(parseInt(monthNumber));
   date.setFullYear(parseInt(yearNumber));
 
-  const month = date
-    .toLocaleString('default', { month: 'long' })
-    .substring(0, 3);
-  const yearShort = date.toLocaleString('default', { year: '2-digit' });
-  const dayOfWeek = date
-    .toLocaleString('default', { weekday: 'long' })
-    .substring(0, 3);
-  return { dayNumber, monthNumber, month, yearShort, dayOfWeek };
+  const weekDay = date
+    .toLocaleDateString('default', {
+      weekday: 'short',
+    })
+    .replaceAll('.', '');
+  const dayAndMonth = date
+    .toLocaleDateString('default', {
+      day: 'numeric',
+      month: 'short',
+    })
+    .replaceAll('.', '');
+
+  return { weekDay, dayAndMonth };
 }
 
 function CardLine({ text, icon }: any) {

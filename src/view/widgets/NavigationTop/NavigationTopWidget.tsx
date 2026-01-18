@@ -28,6 +28,7 @@ export const NavigationTopWidget = ({ path }: { path: string }) => {
             <Button
               bg={'transparent'}
               fontFamily={'FontHeading'}
+              fontWeight={'bold'}
               fontSize={'md'}
               color="gray.50"
               textShadow={'textsm'}

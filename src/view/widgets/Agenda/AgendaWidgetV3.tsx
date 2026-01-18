@@ -100,6 +100,7 @@ export default function AgendaWidgetV3({
                     fontSize={'2xl'}
                     fontFamily={'FontHeading'}
                     textTransform={'uppercase'}
+                    fontWeight={'bold'}
                   >
                     {event.dayOfWeek.substring(0, 3)}
                   </Text>

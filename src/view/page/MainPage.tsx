@@ -52,6 +52,7 @@ export default function MainPage() {
         {config.enableEvents && (
           <FlexContainer id={'events'}>
             <EventsWidgetV3 json="db/events.json" />
+            {/* <EventsWidgetV4 json="db/events.json" /> */}
           </FlexContainer>
         )}
         {config.enableMap && (
