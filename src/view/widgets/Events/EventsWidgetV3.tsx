@@ -133,7 +133,7 @@ export function EventsList({ events }: { events: Model.Events }) {
                         base: '100%',
                         md: '400px',
                       }}
-                      aspectRatio={2 / 1}
+                      // aspectRatio={2 / 1}
                       path={event.image}
                       alt={`${event.name} ${event.description}`}
                     />
@@ -155,6 +155,7 @@ export function EventsList({ events }: { events: Model.Events }) {
                     _light: 'gray.700',
                   }}
                   gap={2}
+                  pt={{ base: '4', md: 0 }}
                 >
                   <Box
                     textTransform={'uppercase'}

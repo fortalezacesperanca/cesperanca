@@ -53,5 +53,16 @@
     "eventType": "common",
     "image": "images/noite-de-vida.jpg",
     "isEnabled": true
+  },
+  {
+    "name": "Culto de Mulheres",
+    "date": "31/01/2026",
+    "time": "19:30",
+    "description": "Lançamento do Livro \"Naufrágio da Dor\" com a Bispa Elza Paulino",
+    "longDescription": "",
+    "address": "R. Chico Lemos, 547 - Cid. dos Funcionários, Fortaleza",
+    "eventType": "common",
+    "image": "images/culto-de-mulheres-elza-paulino-1.jpg",
+    "isEnabled": true
   }
 ]
