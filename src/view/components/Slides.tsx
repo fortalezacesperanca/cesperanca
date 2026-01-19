@@ -37,10 +37,11 @@ export const Slides = ({
       autoplay={{
         delay: 5000,
       }}
+
       // page={page}
       // onPageChange={(e) => setPage(e.page)}
     >
-      <Carousel.ItemGroup boxShadow={'lg'}>{children}</Carousel.ItemGroup>
+      <Carousel.ItemGroup>{children}</Carousel.ItemGroup>
 
       <Carousel.Control
         justifyContent="center"
@@ -97,7 +98,7 @@ export const Slide = ({
       index={index}
     >
       <Center
-        bg={'bg'}
+        // bg={'bg'}
         height={height}
         width={'100%'}
         margin={'auto'}

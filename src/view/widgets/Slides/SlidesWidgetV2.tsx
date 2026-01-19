@@ -18,6 +18,7 @@ export default function SlidesWidgetV2({ path }: { path: string }) {
   return (
     <Box
       position={'relative'}
+      bg="transparent"
       top={{
         base: '-24px',
         md: 0,
@@ -35,6 +36,7 @@ export default function SlidesWidgetV2({ path }: { path: string }) {
                 fit="contain"
                 height={'auto'}
                 width={'100%'}
+                aspectRatio={2 / 1}
               />
             </Slide>
           );
