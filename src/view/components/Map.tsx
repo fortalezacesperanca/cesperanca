@@ -1,8 +1,10 @@
 export const Map = ({
   height = '400px',
   address,
+  className = '',
 }: {
   height?: string;
+  className?: string;
   address: string;
 }) => {
   const encodedAddress = encodeURIComponent(address);
@@ -11,6 +13,7 @@ export const Map = ({
 
   return (
     <iframe
+      className={className}
       title="GoogleMap"
       src={src}
       width="100%"

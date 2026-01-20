@@ -17,13 +17,13 @@ export const colors = defineSemanticTokens.colors({
     muted: {
       value: {
         _light: '{colors.gray.100}',
-        _dark: '{colors.gray.900}',
+        _dark: '{colors.gray.800}',
       },
     },
     emphasized: {
       value: {
         _light: '{colors.gray.200}',
-        _dark: '{colors.gray.800}',
+        _dark: '{colors.gray.700}',
       },
     },
     solid: {
