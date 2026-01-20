@@ -90,7 +90,7 @@ export const HeaderWidget = ({ logo }: { logo?: React.ReactNode }) => {
               >
                 <RiSunFill />
               </Icon>
-              <Switch.Control bg={'bg.emphasized'}>
+              <Switch.Control bg={'bg.muted'}>
                 <Switch.Thumb bg={'bg.solid'} />
               </Switch.Control>
               <Icon

@@ -44,7 +44,7 @@ export default function MapWidgetV3() {
           p={2}
           border={'1px solid'}
           borderColor={'bg.subtle'}
-          bg={'bg.emphasized'}
+          bg={'bg'}
           boxShadow={'sm'}
           borderRadius={'md'}
           width={'100%'}
