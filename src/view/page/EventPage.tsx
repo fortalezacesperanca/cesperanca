@@ -18,7 +18,14 @@ function InfoLine({ text, icon }: any) {
       justifyContent={'left'}
       alignItems={'center'}
     >
-      {icon && <Icon marginEnd={'2'}>{icon}</Icon>}
+      {icon && (
+        <Icon
+          marginEnd={'2'}
+          color="accent.500"
+        >
+          {icon}
+        </Icon>
+      )}
       <Text
         display={'inline'}
         fontSize={'md'}

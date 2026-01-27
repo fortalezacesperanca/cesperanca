@@ -43,6 +43,7 @@ export function Widget({
       >
         {showTitle && (
           <Flex
+            py={4}
             flexGrow={1}
             width={'full'}
             justifyContent={titleFlexPosition}

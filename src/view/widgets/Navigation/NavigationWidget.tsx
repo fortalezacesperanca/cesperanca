@@ -3,6 +3,7 @@ import { Box, Flex, Icon, Text } from '@chakra-ui/react';
 import type React from 'react';
 import {
   RiCalendar2Fill,
+  RiCalendarScheduleFill,
   RiHeart2Fill,
   RiHomeHeartFill,
   RiMapPin2Fill,
@@ -32,6 +33,11 @@ const navigationIcons: Record<string, React.ReactNode> = {
   Ofertas: (
     <IconWithShadow>
       <RiHeart2Fill />
+    </IconWithShadow>
+  ),
+  Eventos: (
+    <IconWithShadow>
+      <RiCalendarScheduleFill />
     </IconWithShadow>
   ),
   'Ao Vivo': (
