@@ -55,8 +55,8 @@ export const createRouter = ({ basename }: { basename: string }) => {
   );
 };
 
-export function getUniqueEventURI(index: number, event: Model.EventItem) {
-  const URI = `${index}:${event.name}:${event.date}`;
+export function getUniqueEventURI(event: Model.EventItem) {
+  const URI = `${event.name}:${event.date}`;
   return Routes.EVENTS + '/' + encodeURIComponent(URI);
 }
 

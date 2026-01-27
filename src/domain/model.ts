@@ -93,7 +93,7 @@ export namespace Model {
   /**
    * Schedule Agenda
    */
-  export type EventItem = {
+  export type EventItem2 = {
     date: string;
     time: string;
     name: string;
@@ -104,6 +104,20 @@ export namespace Model {
     eventType: EventType;
     isEnabled: boolean;
   };
+  export class EventItem {
+    date: string = '';
+    time: string = '';
+    name: string = '';
+    description: string = '';
+    longDescription: string = '';
+    address: string = '';
+    image: string = '';
+    eventType: EventType = 'common';
+    isEnabled: boolean = true;
+    constructor(props?: Partial<EventItem>) {
+      Object.assign(this, props);
+    }
+  }
   export type Events = EventItem[];
 
   /**

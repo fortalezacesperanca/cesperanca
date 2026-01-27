@@ -1,6 +1,6 @@
 import { Box, Flex, Grid, useBreakpointValue } from '@chakra-ui/react';
 import { useRef } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, ScrollRestoration } from 'react-router';
 import type { Model } from '../../domain/model';
 import { CustomLogo } from '../components/custom/CustomLogo';
 import { FlexContainer } from '../components/FlexContainer';
@@ -75,7 +75,7 @@ export const PageTemplateV2 = ({}: PageTemplateV2) => {
             py={6}
             flex="1"
           >
-            {/* <ScrollRestoration /> */}
+            <ScrollRestoration />
             <Outlet />
           </Box>
           <Box as="footer">

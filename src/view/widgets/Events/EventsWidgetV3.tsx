@@ -8,11 +8,6 @@ import {
   SimpleGrid,
   Text,
 } from '@chakra-ui/react';
-import dayjs from 'dayjs';
-import 'dayjs/locale/pt-br';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import updateLocale from 'dayjs/plugin/updateLocale';
-import weekday from 'dayjs/plugin/weekday';
 import {
   RiArrowRightLine,
   RiCalendar2Fill,
@@ -20,42 +15,26 @@ import {
   RiTimeFill,
 } from 'react-icons/ri';
 import { Link } from 'react-router';
-import type { Model } from '../../../domain/model';
+import { LoadEventsUseCase } from '../../../app/usecase/loadEventsUseCase';
+import { Model } from '../../../domain/model';
+import If from '../../components/If';
 import { Image } from '../../components/Image';
+import { List } from '../../components/List';
 import { Widget } from '../../components/Widget';
-import { useJSON } from '../../hooks/useJSON';
+import { useUseCase } from '../../hooks/useUseCase';
 import { getUniqueEventURI, Routes } from '../../routes/routes';
+import { Datetime } from '../../util/date.util';
 
-dayjs.extend(weekday);
-dayjs.extend(updateLocale);
-dayjs.extend(customParseFormat);
-dayjs.locale('pt-br');
-
-// dayjs.updateLocale('pt', {
-//   months: [
-//     'Janeiro',
-//     'Fevereiro',
-//     'Março',
-//     'Abril',
-//     'Maio',
-//     'Junho',
-//     'Julho',
-//     'Agosto',
-//     'Setembro',
-//     'Outubro',
-//     'Novembro',
-//     'Dezembro',
-//   ],
-//   weekdays: [
-//     'Domingo',
-//     'Segunda',
-//     'Terça',
-//     'Quarta',
-//     'Quinta',
-//     'Sexta',
-//     'Sábado',
-//   ],
-// });
+function getDate(dateString: string) {
+  const [dayNumber, monthNumber, yearNumber] = dateString.split('/');
+  const date = new Datetime(
+    `${yearNumber}-${monthNumber}-${dayNumber}`,
+    'YYYY-MM-DD',
+  );
+  const dayOfWeek = date.formatWith('dddd').toUpperCase().substring(0, 3);
+  const month = date.formatWith('MMM');
+  return { dayNumber, dayOfWeek, month };
+}
 
 export default function EventsWidgetV3({
   json,
@@ -64,7 +43,11 @@ export default function EventsWidgetV3({
   json: string;
   showActionButton?: boolean;
 }) {
-  let [events] = useJSON<Model.Events>({ path: json, defaultValue: [] });
+  // let [events] = useJSON<Model.Events>({ path: json, defaultValue: [] });
+  // const loadEvents = useDiInjection(LoadEventsUseCase);
+  // console.log({ loadEvents });
+
+  let [events] = useUseCase<Model.Events>(LoadEventsUseCase);
 
   events = events.filter((event) => event.isEnabled);
 
@@ -86,155 +69,153 @@ export default function EventsWidgetV3({
           xl: 1,
         }}
       >
-        <EventsList events={events} />
+        <If condition={!events.length}>
+          <Text>Ainda não há eventos. Acompanhe para não perder!</Text>
+        </If>
+        <If condition={events.length}>
+          <List
+            list={events}
+            renderItem={(item, index) => {
+              return (
+                <Event
+                  key={index}
+                  event={item}
+                />
+              );
+            }}
+          />
+        </If>
       </SimpleGrid>
     </Widget>
   );
 }
 
-export function EventsList({ events }: { events: Model.Events }) {
-  if (events.length == 0) {
-    return <Text>Ainda não há eventos. Acompanhe para não perder!</Text>;
-  }
+export function Event({ event }: { event: Model.EventItem }) {
   return (
-    <>
-      {events.map((event, index) => (
-        <Box key={index}>
-          <Card.Root
-            flexDirection="row"
-            overflow="hidden"
-            rounded={'lg'}
-            shadow={'md'}
+    <Box>
+      <Card.Root
+        flexDirection="row"
+        overflow="hidden"
+        rounded={'lg'}
+        shadow={'md'}
+      >
+        <Flex width="full">
+          <Flex
+            className="card.content"
+            width="full"
+            flexDirection={{
+              base: 'column',
+              md: 'row',
+            }}
           >
-            <Flex width="full">
-              <Flex
-                className="card.content"
-                width="full"
-                flexDirection={{
-                  base: 'column',
-                  md: 'row',
+            <Box
+              className="card.image"
+              paddingRight={{
+                base: 0,
+                md: 4,
+              }}
+              paddingBottom={{
+                base: 0,
+                md: 0,
+              }}
+            >
+              <Center height={'100%'}>
+                <Image
+                  alignSelf={'center'}
+                  maxWidth={{
+                    base: '100%',
+                    md: '400px',
+                  }}
+                  // aspectRatio={2 / 1}
+                  path={event.image}
+                  alt={`${event.name} ${event.description}`}
+                />
+              </Center>
+            </Box>
+            <Flex
+              px={'4'}
+              direction={{
+                base: 'row',
+                md: 'column',
+              }}
+              justifyContent={'center'}
+              textAlign={'center'}
+              fontFamily={'FontHeading'}
+              fontWeight={'bold'}
+              fontSize={'3xl'}
+              color={{
+                _dark: 'gray.300',
+                _light: 'gray.700',
+              }}
+              gap={2}
+              pt={{ base: '4', md: 0 }}
+            >
+              <Box
+                textTransform={'uppercase'}
+                color={{
+                  _dark: 'gray.300',
+                  _light: 'primary.600',
                 }}
               >
-                <Box
-                  className="card.image"
-                  paddingRight={{
-                    base: 0,
-                    md: 4,
-                  }}
-                  paddingBottom={{
-                    base: 0,
-                    md: 0,
-                  }}
-                >
-                  <Center height={'100%'}>
-                    <Image
-                      alignSelf={'center'}
-                      maxWidth={{
-                        base: '100%',
-                        md: '400px',
-                      }}
-                      // aspectRatio={2 / 1}
-                      path={event.image}
-                      alt={`${event.name} ${event.description}`}
-                    />
-                  </Center>
-                </Box>
-                <Flex
-                  px={'4'}
-                  direction={{
-                    base: 'row',
-                    md: 'column',
-                  }}
-                  justifyContent={'center'}
-                  textAlign={'center'}
-                  fontFamily={'FontHeading'}
-                  fontWeight={'bold'}
-                  fontSize={'3xl'}
-                  color={{
-                    _dark: 'gray.300',
-                    _light: 'gray.700',
-                  }}
-                  gap={2}
-                  pt={{ base: '4', md: 0 }}
-                >
-                  <Box
-                    textTransform={'uppercase'}
-                    color={{
-                      _dark: 'gray.300',
-                      _light: 'primary.600',
-                    }}
-                  >
-                    {getDate(event.date).dayOfWeek}
-                  </Box>
-                  <Box fontWeight={'medium'}>
-                    {getDate(event.date).dayNumber}
-                  </Box>
-                  <Box fontWeight={'medium'}>{getDate(event.date).month}</Box>
-                </Flex>
-
-                <Card.Body
-                  pt={
-                    {
-                      // base: 0,
-                      // md: 6,
-                    }
-                  }
-                  className="card.body"
-                  flexDirection={'column'}
-                >
-                  <Card.Title
-                    mb={4}
-                    fontSize={'xl'}
-                  >
-                    {event.name}
-                  </Card.Title>
-                  <Box
-                    color={'fg'}
-                    // p={6}
-                  >
-                    <CardLine text={event.description} />
-                    <CardLine
-                      text={event.time}
-                      icon={<RiTimeFill />}
-                    />
-                    <CardLine
-                      text={event.address}
-                      icon={<RiMapPin2Fill />}
-                    />
-                    <Flex justifyContent={'flex-end'}>
-                      <Link to={getUniqueEventURI(index, event)}>
-                        <Button
-                          size={'lg'}
-                          colorPalette={'primary'}
-                          fontWeight={'bold'}
-                          _hover={{
-                            textDecoration: 'underline',
-                          }}
-                        >
-                          Ver evento
-                          <Icon>
-                            <RiArrowRightLine />
-                          </Icon>
-                        </Button>
-                      </Link>
-                    </Flex>
-                  </Box>
-                </Card.Body>
-              </Flex>
+                {getDate(event.date).dayOfWeek}
+              </Box>
+              <Box fontWeight={'medium'}>{getDate(event.date).dayNumber}</Box>
+              <Box fontWeight={'medium'}>{getDate(event.date).month}</Box>
             </Flex>
-          </Card.Root>
-        </Box>
-      ))}
-    </>
-  );
-}
 
-function getDate(dateString: string) {
-  const [dayNumber, monthNumber, yearNumber] = dateString.split('/');
-  const date = dayjs(`${yearNumber}-${monthNumber}-${dayNumber}`, 'YYYY-MM-DD');
-  const dayOfWeek = date.format('dddd').toUpperCase().substring(0, 3);
-  const month = date.format('MMM');
-  return { dayNumber, dayOfWeek, month };
+            <Card.Body
+              pt={
+                {
+                  // base: 0,
+                  // md: 6,
+                }
+              }
+              className="card.body"
+              flexDirection={'column'}
+            >
+              <Card.Title
+                mb={4}
+                fontSize={'xl'}
+              >
+                {event.name}
+              </Card.Title>
+              <Box
+                color={'fg'}
+                // p={6}
+              >
+                <CardLine text={event.description} />
+                <CardLine
+                  text={event.time}
+                  icon={<RiTimeFill />}
+                />
+                <CardLine
+                  text={event.address}
+                  icon={<RiMapPin2Fill />}
+                />
+                <Flex justifyContent={'flex-end'}>
+                  <Link to={getUniqueEventURI(event)}>
+                    <Button
+                      size={'lg'}
+                      colorPalette={'primary'}
+                      fontWeight={'bold'}
+                      _hover={{
+                        textDecoration: 'underline',
+                      }}
+                    >
+                      Ver evento
+                      <Icon>
+                        <RiArrowRightLine />
+                      </Icon>
+                    </Button>
+                  </Link>
+                </Flex>
+              </Box>
+            </Card.Body>
+          </Flex>
+        </Flex>
+      </Card.Root>
+    </Box>
+  );
 }
 
 function CardLine({ text, icon }: any) {
