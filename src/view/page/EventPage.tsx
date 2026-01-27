@@ -1,9 +1,15 @@
 import { Box, Container, Flex, Heading, Icon, Text } from '@chakra-ui/react';
+import { useEffect } from 'react';
 import { RiCalendar2Fill, RiMapPin2Fill, RiTimeFill } from 'react-icons/ri';
 import { useParams } from 'react-router';
-import type { Model } from '../../domain/model';
+import {
+  LoadEventsUseCase,
+  type LoadEventsInput,
+  type LoadEventsOutput,
+} from '../../app/usecase/loadEventsUseCase';
+import { UiModel } from '../../domain/model';
 import { Image } from '../components/Image';
-import { useJSON } from '../hooks/useJSON';
+import { useUseCase } from '../hooks/useUseCase';
 
 function InfoLine({ text, icon }: any) {
   return (
@@ -24,15 +30,20 @@ function InfoLine({ text, icon }: any) {
 }
 
 export default function EventPage() {
-  var [events] = useJSON<Model.EventItem[]>({
-    path: 'db/events.json',
-    defaultValue: [],
-  });
-
+  let [events, execute] = useUseCase<LoadEventsInput, LoadEventsOutput>(
+    LoadEventsUseCase,
+  );
   const params = useParams();
 
-  const [_, name] = params.eventURI!.split(':');
-  const event = events.filter((e) => e.name == name)[0];
+  const uiEvents = events.map((d) => UiModel.EventItem.fromDomain(d));
+
+  useEffect(() => {
+    execute();
+  }, []);
+
+  const [name] = params.eventURI!.split(':');
+  console.log(name);
+  const event = uiEvents.find((e) => e.name == name);
 
   return (
     <Flex direction={'column'}>

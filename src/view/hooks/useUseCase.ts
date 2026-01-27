@@ -1,22 +1,22 @@
 import type { OptionalGetOptions, ServiceIdentifier } from 'inversify';
-import { useEffect } from 'react';
 import type { IUseCase } from '../../app/iusecase';
 import { useDiInjection } from './useDiInjection';
 import { usePromise } from './usePromise';
 
-export function useUseCase<T>(
-  serviceIdentifier: ServiceIdentifier<IUseCase<unknown, T>>,
+export function useUseCase<I, O>(
+  serviceIdentifier: ServiceIdentifier<IUseCase<I, O>>,
   options?: OptionalGetOptions,
-): [T] {
+): [O, (input?: I) => Promise<O>] {
   const usecase = useDiInjection(serviceIdentifier, options);
-  const [data, trigger, _] = usePromise<T>({
-    fn: () => usecase.execute(),
+
+  const [data, trigger, _] = usePromise<O>({
+    fn: (...args) => usecase.execute(...args),
     defaultValue: [],
   });
 
-  useEffect(() => {
-    trigger();
-  }, []);
+  // useEffect(() => {
+  //   trigger();
+  // }, []);
 
-  return [data];
+  return [data, trigger];
 }

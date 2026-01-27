@@ -1,3 +1,42 @@
+import type { Datetime } from '../view/util/date.util';
+
+export namespace UiModel {
+  export class EventItem {
+    name: string;
+    date: string;
+    time: string;
+    day: string;
+    dayOfWeek: string;
+    monthName: string;
+    description: string;
+    image: string;
+    longDescription: string;
+    address: string;
+    eventType: string;
+    isEnabled: boolean = true;
+
+    private constructor(props: EventItem) {
+      Object.assign(this, props);
+    }
+    static fromDomain(domain: Model.EventItem) {
+      return new EventItem({
+        name: domain.name,
+        date: domain.date.formatWith('LL'),
+        day: domain.date.formatWith('DD'),
+        dayOfWeek: domain.date.formatWith('ddd'),
+        monthName: domain.date.formatWith('MMM'),
+        time: domain.time.formatWith('HH:mm'),
+        image: domain.image,
+        description: domain.description,
+        longDescription: domain.longDescription,
+        address: domain.address,
+        eventType: domain.eventType,
+        isEnabled: domain.isEnabled,
+      });
+    }
+  }
+}
+
 export namespace Model {
   /**
    * Navigation
@@ -105,8 +144,18 @@ export namespace Model {
     isEnabled: boolean;
   };
   export class EventItem {
-    date: string = '';
-    time: string = '';
+    date: Datetime;
+    // dateCustom:
+    //   | {
+    //       day: string;
+    //       dayOfWeek: string;
+    //       month: string;
+    //     }
+    //   | undefined;
+    // date: string = '';
+    // timeRaw: Datetime | undefined;
+    time: Datetime;
+    // time: string = '';
     name: string = '';
     description: string = '';
     longDescription: string = '';

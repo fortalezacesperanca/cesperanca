@@ -14,7 +14,9 @@ export function List<T extends any>({
       <Flex></Flex>
       <ChakraList.Root gap={4}>
         {resultList.map((item, index) => (
-          <ChakraList.Item>{renderItem(item, index)}</ChakraList.Item>
+          <ChakraList.Item key={index}>
+            {renderItem(item, index)}
+          </ChakraList.Item>
         ))}
       </ChakraList.Root>
     </Box>

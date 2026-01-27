@@ -1,17 +1,12 @@
 import React, { useEffect } from 'react';
 import { createBrowserRouter, useLocation } from 'react-router';
-import type { Model } from '../../domain/model';
+import type { UiModel } from '../../domain/model';
 import AgendaPage from '../page/AgendaPage';
 import EventPage from '../page/EventPage';
 import EventsPage from '../page/EventsPage';
 import MainPage from '../page/MainPage';
 import PrivacyPage from '../page/PrivacyPage';
 import { PageTemplateV2 } from '../template/PageTemplateV2';
-
-// export const ROOT = '/';
-// export const EVENTS = '/events';
-// export const AGENDA = '/agenda';
-// export const PRIVACY = '/privacy';
 
 export const Routes = {
   ROOT: '/',
@@ -55,8 +50,8 @@ export const createRouter = ({ basename }: { basename: string }) => {
   );
 };
 
-export function getUniqueEventURI(event: Model.EventItem) {
-  const URI = `${event.name}:${event.date}`;
+export function getUniqueEventURI(event: UiModel.EventItem) {
+  const URI = `${event.name}:${event.day}`;
   return Routes.EVENTS + '/' + encodeURIComponent(URI);
 }
 

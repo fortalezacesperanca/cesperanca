@@ -8,6 +8,7 @@ import {
   SimpleGrid,
   Text,
 } from '@chakra-ui/react';
+import { useEffect } from 'react';
 import {
   RiArrowRightLine,
   RiCalendar2Fill,
@@ -15,26 +16,20 @@ import {
   RiTimeFill,
 } from 'react-icons/ri';
 import { Link } from 'react-router';
-import { LoadEventsUseCase } from '../../../app/usecase/loadEventsUseCase';
-import { Model } from '../../../domain/model';
+import {
+  LoadEventsUseCase,
+  type LoadEventsInput,
+  type LoadEventsOutput,
+} from '../../../app/usecase/loadEventsUseCase';
+import { UiModel } from '../../../domain/model';
 import If from '../../components/If';
 import { Image } from '../../components/Image';
 import { List } from '../../components/List';
 import { Widget } from '../../components/Widget';
 import { useUseCase } from '../../hooks/useUseCase';
 import { getUniqueEventURI, Routes } from '../../routes/routes';
-import { Datetime } from '../../util/date.util';
 
-function getDate(dateString: string) {
-  const [dayNumber, monthNumber, yearNumber] = dateString.split('/');
-  const date = new Datetime(
-    `${yearNumber}-${monthNumber}-${dayNumber}`,
-    'YYYY-MM-DD',
-  );
-  const dayOfWeek = date.formatWith('dddd').toUpperCase().substring(0, 3);
-  const month = date.formatWith('MMM');
-  return { dayNumber, dayOfWeek, month };
-}
+export function EventsViewModel() {}
 
 export default function EventsWidgetV3({
   json,
@@ -43,13 +38,15 @@ export default function EventsWidgetV3({
   json: string;
   showActionButton?: boolean;
 }) {
-  // let [events] = useJSON<Model.Events>({ path: json, defaultValue: [] });
-  // const loadEvents = useDiInjection(LoadEventsUseCase);
-  // console.log({ loadEvents });
+  let [events, execute] = useUseCase<LoadEventsInput, LoadEventsOutput>(
+    LoadEventsUseCase,
+  );
 
-  let [events] = useUseCase<Model.Events>(LoadEventsUseCase);
+  const uiEvents = events.map((d) => UiModel.EventItem.fromDomain(d));
 
-  events = events.filter((event) => event.isEnabled);
+  useEffect(() => {
+    execute({ json });
+  }, []);
 
   return (
     <Widget
@@ -74,7 +71,7 @@ export default function EventsWidgetV3({
         </If>
         <If condition={events.length}>
           <List
-            list={events}
+            list={uiEvents}
             renderItem={(item, index) => {
               return (
                 <Event
@@ -90,7 +87,7 @@ export default function EventsWidgetV3({
   );
 }
 
-export function Event({ event }: { event: Model.EventItem }) {
+export function Event({ event }: { event: UiModel.EventItem }) {
   return (
     <Box>
       <Card.Root
@@ -157,10 +154,11 @@ export function Event({ event }: { event: Model.EventItem }) {
                   _light: 'primary.600',
                 }}
               >
-                {getDate(event.date).dayOfWeek}
+                {/* {event.dateCustom?.dayOfWeek} */}
+                {event.dayOfWeek}
               </Box>
-              <Box fontWeight={'medium'}>{getDate(event.date).dayNumber}</Box>
-              <Box fontWeight={'medium'}>{getDate(event.date).month}</Box>
+              <Box fontWeight={'medium'}>{event.day}</Box>
+              <Box fontWeight={'medium'}>{event.monthName}</Box>
             </Flex>
 
             <Card.Body
