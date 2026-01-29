@@ -8,7 +8,6 @@ import {
   SimpleGrid,
   Text,
 } from '@chakra-ui/react';
-import { useEffect } from 'react';
 import {
   RiArrowRightLine,
   RiCalendar2Fill,
@@ -16,18 +15,13 @@ import {
   RiTimeFill,
 } from 'react-icons/ri';
 import { Link } from 'react-router';
-import {
-  LoadEventsUseCase,
-  type LoadEventsInput,
-  type LoadEventsOutput,
-} from '../../../app/usecase/loadEventsUseCase';
 import { UiModel } from '../../../domain/model';
 import If from '../../components/If';
 import { Image } from '../../components/Image';
 import { List } from '../../components/List';
 import { Widget } from '../../components/Widget';
-import { useUseCase } from '../../hooks/useUseCase';
 import { getUniqueEventURI, Routes } from '../../routes/routes';
+import { useEventsViewModel } from './Events.ViewModel';
 
 export function EventsViewModel() {}
 
@@ -38,15 +32,7 @@ export default function EventsWidgetV3({
   json: string;
   showActionButton?: boolean;
 }) {
-  let [events, execute] = useUseCase<LoadEventsInput, LoadEventsOutput>(
-    LoadEventsUseCase,
-  );
-
-  const uiEvents = events.map((d) => UiModel.EventItem.fromDomain(d));
-
-  useEffect(() => {
-    execute({ json });
-  }, []);
+  const { uiEvents } = useEventsViewModel({ json });
 
   return (
     <Widget
@@ -66,10 +52,10 @@ export default function EventsWidgetV3({
           xl: 1,
         }}
       >
-        <If condition={!events.length}>
+        <If condition={!uiEvents.length}>
           <Text>Ainda não há eventos. Acompanhe para não perder!</Text>
         </If>
-        <If condition={events.length}>
+        <If condition={uiEvents.length}>
           <List
             list={uiEvents}
             renderItem={(item, index) => {
@@ -123,7 +109,7 @@ export function Event({ event }: { event: UiModel.EventItem }) {
                     base: '100%',
                     md: '400px',
                   }}
-                  // aspectRatio={2 / 1}
+                  aspectRatio={16 / 9}
                   path={event.image}
                   alt={`${event.name} ${event.description}`}
                 />

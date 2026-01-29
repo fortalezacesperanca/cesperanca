@@ -21,7 +21,7 @@ function App() {
   });
 
   var [global] = useJSON<Model.Global>({
-    path: 'db/global.json',
+    json: 'db/global.json',
     defaultValue: [],
   });
 

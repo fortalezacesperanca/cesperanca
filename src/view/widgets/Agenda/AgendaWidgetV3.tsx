@@ -5,47 +5,6 @@ import { Widget } from '../../components/Widget';
 import { Routes } from '../../routes/routes';
 import { useAgendaViewModel } from './AgendaWidget.ViewModel';
 
-const styles = (eventType: Model.EventType) => {
-  const styleTypes: Record<Model.EventType, BoxProps> = {
-    common: {
-      bgGradient: 'to-tr',
-      gradientFrom: 'primary.600',
-      gradientTo: 'accent.400',
-    },
-    variant: {
-      bgGradient: 'to-tr',
-      gradientFrom: 'aqua.600',
-      gradientTo: 'aqua.400',
-    },
-    special: {
-      bgGradient: 'to-tr',
-      gradientFrom: 'red.600',
-      gradientTo: 'red.400',
-    },
-    men: {
-      bgGradient: 'to-tr',
-      gradientFrom: 'blue.600',
-      gradientTo: 'cyan.400',
-    },
-    women: {
-      bgGradient: 'to-tr',
-      gradientFrom: 'pink.600',
-      gradientTo: 'pink.400',
-    },
-    teen: {
-      bgGradient: 'to-tr',
-      gradientFrom: 'purple.600',
-      gradientTo: 'purple.400',
-    },
-    kids: {
-      bgGradient: 'to-tr',
-      gradientFrom: 'orange.600',
-      gradientTo: 'yellow.500',
-    },
-  };
-  return styleTypes[eventType];
-};
-
 export default function AgendaWidgetV3({
   json,
   showActionButton = true,
@@ -136,3 +95,44 @@ export default function AgendaWidgetV3({
     </Widget>
   );
 }
+
+const styles = (eventType: Model.EventType) => {
+  const styleTypes: Record<Model.EventType, BoxProps> = {
+    common: {
+      bgGradient: 'to-tr',
+      gradientFrom: 'primary.600',
+      gradientTo: 'accent.400',
+    },
+    variant: {
+      bgGradient: 'to-tr',
+      gradientFrom: 'aqua.600',
+      gradientTo: 'aqua.400',
+    },
+    special: {
+      bgGradient: 'to-tr',
+      gradientFrom: 'red.600',
+      gradientTo: 'red.400',
+    },
+    men: {
+      bgGradient: 'to-tr',
+      gradientFrom: 'blue.600',
+      gradientTo: 'cyan.400',
+    },
+    women: {
+      bgGradient: 'to-tr',
+      gradientFrom: 'pink.600',
+      gradientTo: 'pink.400',
+    },
+    teen: {
+      bgGradient: 'to-tr',
+      gradientFrom: 'purple.600',
+      gradientTo: 'purple.400',
+    },
+    kids: {
+      bgGradient: 'to-tr',
+      gradientFrom: 'orange.600',
+      gradientTo: 'yellow.500',
+    },
+  };
+  return styleTypes[eventType];
+};

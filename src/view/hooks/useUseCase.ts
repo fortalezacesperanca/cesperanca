@@ -14,9 +14,5 @@ export function useUseCase<I, O>(
     defaultValue: [],
   });
 
-  // useEffect(() => {
-  //   trigger();
-  // }, []);
-
   return [data, trigger];
 }
