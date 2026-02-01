@@ -5,7 +5,7 @@ import type { Model } from '../../../domain/model';
 import { useJSON } from '../../hooks/useJSON';
 
 export const NavigationTopWidget = ({ path }: { path: string }) => {
-  var [menu] = useJSON<Model.Menu>({ path, defaultValue: [] });
+  var [menu] = useJSON<Model.Menu>({ json: path, defaultValue: [] });
 
   return (
     <Flex

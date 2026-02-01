@@ -1,16 +1,9 @@
 import { Box, Image } from '@chakra-ui/react';
-import { Env } from '../../../config/env';
 import { Slide, Slides } from '../../components/Slides';
-import { useJSON } from '../../hooks/useJSON';
+import { useImageJSON } from '../../hooks/useImage';
 
 export default function SlidesWidgetV2({ path }: { path: string }) {
-  const [paths] = useJSON<string[]>({ path, defaultValue: [] });
-
-  const basename = Env.getEnv().HOST;
-  const images = paths.map((path) => {
-    return `${basename}${path}`;
-  });
-
+  const [images] = useImageJSON({ path });
   if (images.length == 0) {
     return <></>;
   }

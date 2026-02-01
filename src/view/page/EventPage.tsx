@@ -1,15 +1,8 @@
 import { Box, Container, Flex, Heading, Icon, Text } from '@chakra-ui/react';
-import { useEffect } from 'react';
 import { RiCalendar2Fill, RiMapPin2Fill, RiTimeFill } from 'react-icons/ri';
 import { useParams } from 'react-router';
-import {
-  LoadEventsUseCase,
-  type LoadEventsInput,
-  type LoadEventsOutput,
-} from '../../app/usecase/loadEventsUseCase';
-import { UiModel } from '../../domain/model';
 import { Image } from '../components/Image';
-import { useUseCase } from '../hooks/useUseCase';
+import { useEventListViewModel } from '../widgets/Events/Events.ViewModel';
 
 function InfoLine({ text, icon }: any) {
   return (
@@ -37,19 +30,10 @@ function InfoLine({ text, icon }: any) {
 }
 
 export default function EventPage() {
-  let [events, execute] = useUseCase<LoadEventsInput, LoadEventsOutput>(
-    LoadEventsUseCase,
-  );
   const params = useParams();
 
-  const uiEvents = events.map((d) => UiModel.EventItem.fromDomain(d));
-
-  useEffect(() => {
-    execute();
-  }, []);
-
   const [name] = params.eventURI!.split(':');
-  console.log(name);
+  const { uiEvents } = useEventListViewModel();
   const event = uiEvents.find((e) => e.name == name);
 
   return (
@@ -63,7 +47,7 @@ export default function EventPage() {
               py={2}
               justifyContent={'center'}
             >
-              <Image path={event.image} />
+              <Image src={event.image} />
             </Flex>
             <Heading
               py={2}

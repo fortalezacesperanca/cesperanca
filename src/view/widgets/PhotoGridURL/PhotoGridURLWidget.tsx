@@ -1,15 +1,15 @@
-import { Center, Flex, HStack, Image, SimpleGrid } from "@chakra-ui/react";
-import { useState } from "react";
-import { RiCamera2Fill } from "react-icons/ri";
-import { Model } from "../../../domain/model";
-import { Modal } from "../../components/Modal";
-import { WidgetTitle } from "../../components/WidgetTitle";
-import { useJSON } from "../../hooks/useJSON";
+import { Center, Flex, HStack, Image, SimpleGrid } from '@chakra-ui/react';
+import { useState } from 'react';
+import { RiCamera2Fill } from 'react-icons/ri';
+import { Model } from '../../../domain/model';
+import { Modal } from '../../components/Modal';
+import { WidgetTitle } from '../../components/WidgetTitle';
+import { useJSON } from '../../hooks/useJSON';
 
 export const PhotoGridWidgetURL = ({ path }: { path: string }) => {
-  var [photos] = useJSON<Model.Photos>({ path, defaultValue: [] });
+  var [photos] = useJSON<Model.Photos>({ json: path, defaultValue: [] });
 
-  var [currentPhoto, setCurrentPhoto] = useState("");
+  var [currentPhoto, setCurrentPhoto] = useState('');
   const [openModal, setOpenModal] = useState(false);
 
   function openPreview(photo: string) {
@@ -21,7 +21,7 @@ export const PhotoGridWidgetURL = ({ path }: { path: string }) => {
     <Flex direction="column">
       <Flex mb={4}>
         <WidgetTitle
-          text={"Veja nossa galeria"}
+          text={'Veja nossa galeria'}
           icon={<RiCamera2Fill />}
         />
       </Flex>
@@ -36,7 +36,7 @@ export const PhotoGridWidgetURL = ({ path }: { path: string }) => {
               <Image
                 shadow="lg"
                 src={photo}
-                cursor={"button"}
+                cursor={'button'}
                 onClick={() => openPreview(photo)}
               />
             </HStack>
@@ -52,8 +52,8 @@ export const PhotoGridWidgetURL = ({ path }: { path: string }) => {
           <Image
             src={currentPhoto}
             shadow="lg"
-            maxW={"100%"}
-            maxH={"75vh"}
+            maxW={'100%'}
+            maxH={'75vh'}
           />
         </Center>
       </Modal>

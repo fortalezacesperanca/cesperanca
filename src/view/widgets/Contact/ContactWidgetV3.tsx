@@ -20,7 +20,7 @@ function ContactLine({ text, icon }: any) {
 
 export default function ContactWidgetV3() {
   const [global] = useJSON<Model.Global>({
-    path: 'db/global.json',
+    json: 'db/global.json',
     defaultValue: {},
   });
   return (

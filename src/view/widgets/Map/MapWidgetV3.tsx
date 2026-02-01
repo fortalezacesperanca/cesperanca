@@ -9,7 +9,7 @@ import { useJSON } from '../../hooks/useJSON';
 
 export default function MapWidgetV3() {
   var [global] = useJSON<Model.Global>({
-    path: 'db/global.json',
+    json: 'db/global.json',
     defaultValue: [],
   });
 

@@ -11,7 +11,7 @@ export default function QuoteWidget({
   mode?: 'random' | 'byIndex';
   index?: number;
 }) {
-  const [quotes] = useJSON<Model.Quote[]>({ path, defaultValue: [] });
+  const [quotes] = useJSON<Model.Quote[]>({ json: path, defaultValue: [] });
 
   let quote: Model.Quote = {
     caption: '',

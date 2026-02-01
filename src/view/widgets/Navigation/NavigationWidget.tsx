@@ -53,7 +53,7 @@ const navigationIcons: Record<string, React.ReactNode> = {
 };
 
 export const NavigationWidget = ({ path }: { path: string }) => {
-  var [menu] = useJSON<Model.Menu>({ path, defaultValue: [] });
+  var [menu] = useJSON<Model.Menu>({ json: path, defaultValue: [] });
 
   return (
     <Flex

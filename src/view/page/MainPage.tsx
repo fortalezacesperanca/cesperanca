@@ -16,7 +16,7 @@ import SocialsWidgetV3 from '../widgets/Socials/SocialsWidgetV3.tsx';
 
 export default function MainPage() {
   var [config] = useJSON<Model.Config>({
-    path: 'db/config.json',
+    json: 'db/config.json',
     defaultValue: {},
   });
 
@@ -51,8 +51,7 @@ export default function MainPage() {
         )}
         {config.enableEvents && (
           <FlexContainer id={'events'}>
-            <EventsWidgetV3 json="db/events.json" />
-            {/* <EventsWidgetV4 json="db/events.json" /> */}
+            <EventsWidgetV3 />
           </FlexContainer>
         )}
         {config.enableMap && (

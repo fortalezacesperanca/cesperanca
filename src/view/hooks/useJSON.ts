@@ -1,17 +1,17 @@
-import { useEffect } from "react";
-import { JsonService } from "../../infra/services/json.service";
-import { usePromise } from "./usePromise";
+import { useEffect } from 'react';
+import { JsonService } from '../../infra/services/json.service';
+import { usePromise } from './usePromise';
 
 export function useJSON<T>({
-  path,
+  json,
   defaultValue,
 }: {
-  path: string;
+  json: string;
   defaultValue: any;
 }) {
   var service = JsonService.getInstance();
   const [data, trigger, _] = usePromise<T>({
-    fn: () => service.getByPath(path),
+    fn: () => service.getByPath(json),
     defaultValue: defaultValue,
   });
 

@@ -4,27 +4,19 @@ import {
   Flex,
   Heading,
   IconButton,
-  Image,
   Input,
   InputGroup,
   Text,
 } from '@chakra-ui/react';
 import { RiHeart2Fill } from 'react-icons/ri';
 import { Model } from '../../../domain/model';
+import { Image } from '../../components/Image';
 import { Widget } from '../../components/Widget';
-import { useImageList } from '../../hooks/useImage';
 import { useJSON } from '../../hooks/useJSON';
 
 export default function PixWidgetV3() {
-  const [images] = useImageList<string[]>({
-    path: ['images/pix.jpg', 'images/pix-banco-central.svg'],
-    defaultValue: [],
-  });
-
-  const [qrcode, pix] = images;
-
   const [global] = useJSON<Model.Global>({
-    path: 'db/global.json',
+    json: 'db/global.json',
     defaultValue: {},
   });
 
@@ -65,7 +57,7 @@ export default function PixWidgetV3() {
                 <Image
                   alt=""
                   width={'150px'}
-                  src={pix}
+                  src={'images/pix-banco-central.svg'}
                 />
               </Flex>
               <Text fontSize={'md'}>{bankName}</Text>
@@ -104,7 +96,7 @@ export default function PixWidgetV3() {
           >
             <Image
               alt="Qrcode do Pix para ofertas para Comunidade Esperança"
-              src={qrcode}
+              src={'images/pix.jpg'}
               width={'300px'}
             />
           </Box>

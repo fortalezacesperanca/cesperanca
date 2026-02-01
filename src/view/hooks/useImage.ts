@@ -1,39 +1,16 @@
-import { useEffect, useState } from 'react';
-import { ImageService } from '../../infra/services/image.service';
-import { usePromise } from './usePromise';
+import { Env } from '../../config/env';
+import { useJSON } from './useJSON';
 
-export function useImageList<T = string | string[]>({
-  path,
-  defaultValue,
-}: {
-  path: string | string[];
-  defaultValue: any;
-}) {
-  var service = ImageService.getInstance();
-
-  const isArrayOfPaths = Array.isArray(path);
-
-  const [data, trigger, _] = usePromise<T>({
-    fn: () =>
-      isArrayOfPaths ? service.getByPaths(path) : service.getByPath(path),
-    defaultValue: defaultValue,
+export const useImageJSON = ({ path }: { path: string }) => {
+  const [paths] = useJSON<string[]>({ json: path, defaultValue: [] });
+  const basename = Env.getEnv().HOST;
+  const images = paths.map((path) => {
+    return `${basename}${path}`;
   });
+  return [images];
+};
 
-  useEffect(() => {
-    trigger();
-  }, []);
-
-  return [data];
-}
-export function useImage(): [string, (path: string) => Promise<void>] {
-  var service = ImageService.getInstance();
-  //@ts-ignore
-  const [src, setSrc] = useState<string>(null);
-
-  const trigger = async (path: string) => {
-    const base64 = await service.getByPath(path);
-    setSrc(base64);
-  };
-
-  return [src, trigger];
-}
+export const useImage = (path: string) => {
+  const basename = Env.getEnv().HOST;
+  return `${basename}${path}`;
+};

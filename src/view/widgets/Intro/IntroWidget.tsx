@@ -5,7 +5,7 @@ import { useJSON } from '../../hooks/useJSON';
 
 export default function IntroWidget({ path }: { path: string }) {
   var [intro] = useJSON<Model.Intro>({
-    path,
+    json: path,
     defaultValue: [],
   });
 

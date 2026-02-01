@@ -1,29 +1,11 @@
-import { useEffect } from 'react';
-import {
-  LoadEventsUseCase,
-  type LoadEventsInput,
-  type LoadEventsOutput,
-} from '../../../app/usecase/loadEventsUseCase';
 import { Model, UiModel } from '../../../domain/model';
 import { useJSON } from '../../hooks/useJSON';
-import { useUseCase } from '../../hooks/useUseCase';
 import { Datetime } from '../../util/date.util';
 
-export const useEventsViewModelDeprecated = ({ json }: any) => {
-  let [events, execute] = useUseCase<LoadEventsInput, LoadEventsOutput>(
-    LoadEventsUseCase,
-  );
+const json = 'db/events.json';
 
-  const uiEvents = events.map((d) => UiModel.EventItem.fromDomain(d));
-
-  useEffect(() => {
-    execute({ json });
-  }, []);
-
-  return { uiEvents };
-};
-export const useEventsViewModel = ({ json }: any) => {
-  var [data] = useJSON<any[]>({ path: json, defaultValue: [] });
+export const useEventListViewModel = () => {
+  var [data] = useJSON<any[]>({ json, defaultValue: [] });
 
   var events = data.map((item) => {
     /**

@@ -15,11 +15,11 @@ import { useJSON } from '../../hooks/useJSON';
 import { Routes } from '../../routes/routes';
 export const FooterWidget = () => {
   var [menu] = useJSON<Model.Menu>({
-    path: 'db/navigation_desktop_footer.json',
+    json: 'db/navigation_desktop_footer.json',
     defaultValue: [],
   });
   var [global] = useJSON<Model.Global>({
-    path: 'db/global.json',
+    json: 'db/global.json',
     defaultValue: [],
   });
 

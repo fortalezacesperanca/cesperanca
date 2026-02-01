@@ -77,7 +77,7 @@ function SocialButton({ text, icon, link, styles }: any) {
 
 export default function SocialsWidgetV3() {
   var [global] = useJSON<Model.Global>({
-    path: 'db/global.json',
+    json: 'db/global.json',
     defaultValue: [],
   });
 

@@ -13,7 +13,7 @@ import { RiArrowRightLine } from 'react-icons/ri';
 import { Link } from 'react-router';
 import type { Model } from '../../../domain/model';
 import { WidgetTitle } from '../../components/WidgetTitle';
-import { useAgendaViewModel } from './AgendaWidget.ViewModel';
+import { useAgendaListViewModel } from './AgendaWidget.ViewModel';
 
 const eventStyles = (eventType: Model.EventType) => {
   const styles: Record<Model.EventType, FlexProps> = {
@@ -73,7 +73,7 @@ export default function AgendaWidgetV2({
   showTitle?: boolean;
   showActionButton?: boolean;
 }) {
-  const { agenda } = useAgendaViewModel({ json });
+  const { agenda } = useAgendaListViewModel({ json });
 
   return (
     <Flex

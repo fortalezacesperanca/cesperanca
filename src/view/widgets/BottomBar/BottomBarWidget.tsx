@@ -5,7 +5,7 @@ import { useJSON } from '../../hooks/useJSON';
 
 export const BottomBarWidget = () => {
   var [global] = useJSON<Model.Global>({
-    path: 'db/global.json',
+    json: 'db/global.json',
     defaultValue: [],
   });
 

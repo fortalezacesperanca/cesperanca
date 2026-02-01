@@ -17,22 +17,21 @@ import {
 import { Link } from 'react-router';
 import { UiModel } from '../../../domain/model';
 import If from '../../components/If';
+// import { Image } from '../../components/Image';
 import { Image } from '../../components/Image';
 import { List } from '../../components/List';
 import { Widget } from '../../components/Widget';
 import { getUniqueEventURI, Routes } from '../../routes/routes';
-import { useEventsViewModel } from './Events.ViewModel';
+import { useEventListViewModel } from './Events.ViewModel';
 
 export function EventsViewModel() {}
 
 export default function EventsWidgetV3({
-  json,
   showActionButton = true,
 }: {
-  json: string;
   showActionButton?: boolean;
 }) {
-  const { uiEvents } = useEventsViewModel({ json });
+  const { uiEvents } = useEventListViewModel();
 
   return (
     <Widget
@@ -110,7 +109,7 @@ export function Event({ event }: { event: UiModel.EventItem }) {
                     md: '400px',
                   }}
                   aspectRatio={16 / 9}
-                  path={event.image}
+                  src={event.image}
                   alt={`${event.name} ${event.description}`}
                 />
               </Center>
@@ -140,7 +139,6 @@ export function Event({ event }: { event: UiModel.EventItem }) {
                   _light: 'primary.600',
                 }}
               >
-                {/* {event.dateCustom?.dayOfWeek} */}
                 {event.dayOfWeek}
               </Box>
               <Box fontWeight={'medium'}>{event.day}</Box>

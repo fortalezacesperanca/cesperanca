@@ -2,10 +2,10 @@ import { Box, Card, Center, Flex, Heading, Table } from '@chakra-ui/react';
 import { RiCalendar2Fill } from 'react-icons/ri';
 import type { Model } from '../../../domain/model';
 import { WidgetTitle } from '../../components/WidgetTitle';
-import { useAgendaViewModel } from './AgendaWidget.ViewModel';
+import { useAgendaListViewModel } from './AgendaWidget.ViewModel';
 
 export default function AgendaWidget({ path }: { path: string }) {
-  const { groupedAgenda } = useAgendaViewModel({ json: path });
+  const { groupedAgenda } = useAgendaListViewModel({ json: path });
 
   return (
     <Flex direction="column">

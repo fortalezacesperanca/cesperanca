@@ -18,7 +18,7 @@ export const PageTemplateV2 = ({}: PageTemplateV2) => {
   const height = '100dvh';
 
   const [global] = useJSON<Model.Global>({
-    path: 'db/global.json',
+    json: 'db/global.json',
     defaultValue: [],
   });
 

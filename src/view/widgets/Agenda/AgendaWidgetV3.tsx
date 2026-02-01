@@ -3,7 +3,7 @@ import { RiTimeFill } from 'react-icons/ri';
 import type { Model } from '../../../domain/model';
 import { Widget } from '../../components/Widget';
 import { Routes } from '../../routes/routes';
-import { useAgendaViewModel } from './AgendaWidget.ViewModel';
+import { useAgendaListViewModel } from './AgendaWidget.ViewModel';
 
 export default function AgendaWidgetV3({
   json,
@@ -12,7 +12,7 @@ export default function AgendaWidgetV3({
   json: string;
   showActionButton?: boolean;
 }) {
-  const { agenda } = useAgendaViewModel({ json });
+  const { agenda } = useAgendaListViewModel({ json });
 
   return (
     <Widget
