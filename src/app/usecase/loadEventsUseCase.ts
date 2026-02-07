@@ -8,7 +8,7 @@ export type LoadEventsInput = {
   json: string;
 };
 
-export type LoadEventsOutput = Model.Events;
+export type LoadEventsOutput = Model.Event[];
 
 @injectable()
 export class LoadEventsUseCase

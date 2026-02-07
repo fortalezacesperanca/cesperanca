@@ -113,19 +113,18 @@ export namespace Model {
     | 'women'
     | 'kids';
 
-  export type AgendaItem = {
+  export type Agenda = {
     dayOfWeek: string;
     time: string;
     eventName: string;
     description: string;
     eventType: EventType;
   };
-  export type Agenda = AgendaItem[];
 
   export class GroupedAgenda {
     constructor(
       public dayOfWeek: string,
-      public events: AgendaItem[],
+      public events: Agenda[],
     ) {}
   }
 
