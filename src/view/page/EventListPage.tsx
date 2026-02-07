@@ -1,13 +1,13 @@
 import { Container, Flex } from '@chakra-ui/react';
-import AgendaWidget from '../widgets/Agenda/AgendaWidgetV3';
+import EventListWidget from '../widgets/Events/EventListWidget';
 
-export default function AgendaPage() {
+export default function EventListPage() {
   return (
     <Flex direction={'column'}>
       <Flex>
         <Container>
-          <AgendaWidget
-            json="db/agenda_cultos.json"
+          <EventListWidget
+            json="db/events.json"
             showActionButton={false}
           />
         </Container>

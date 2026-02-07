@@ -18,7 +18,7 @@ export namespace UiModel {
     private constructor(props: EventItem) {
       Object.assign(this, props);
     }
-    static fromDomain(domain: Model.EventItem) {
+    static fromDomain(domain: Model.Event) {
       return new EventItem({
         name: domain.name,
         date: domain.date.formatWith('LL'),
@@ -132,30 +132,20 @@ export namespace Model {
   /**
    * Schedule Agenda
    */
-  export type EventItem2 = {
-    date: string;
-    time: string;
-    name: string;
-    description: string;
-    longDescription: string;
-    address: string;
-    image: string;
-    eventType: EventType;
-    isEnabled: boolean;
-  };
-  export class EventItem {
+  // export type EventItem2 = {
+  //   date: string;
+  //   time: string;
+  //   name: string;
+  //   description: string;
+  //   longDescription: string;
+  //   address: string;
+  //   image: string;
+  //   eventType: EventType;
+  //   isEnabled: boolean;
+  // };
+  export class Event {
     date: Datetime;
-    // dateCustom:
-    //   | {
-    //       day: string;
-    //       dayOfWeek: string;
-    //       month: string;
-    //     }
-    //   | undefined;
-    // date: string = '';
-    // timeRaw: Datetime | undefined;
     time: Datetime;
-    // time: string = '';
     name: string = '';
     description: string = '';
     longDescription: string = '';
@@ -163,12 +153,10 @@ export namespace Model {
     image: string = '';
     eventType: EventType = 'common';
     isEnabled: boolean = true;
-    constructor(props?: Partial<EventItem>) {
+    constructor(props?: Partial<Event>) {
       Object.assign(this, props);
     }
   }
-  export type Events = EventItem[];
-
   /**
    *
    */

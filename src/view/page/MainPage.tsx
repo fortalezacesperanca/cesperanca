@@ -4,9 +4,9 @@ import { Flex } from '@chakra-ui/react';
 import type { Model } from '../../domain/model';
 import { FlexContainer } from '../components/FlexContainer';
 import { useJSON } from '../hooks/useJSON';
-import AgendaWidgetV3 from '../widgets/Agenda/AgendaWidgetV3.tsx';
+import AgendaWidget from '../widgets/Agenda/AgendaWidgetV3.tsx';
 import ContactWidgetV3 from '../widgets/Contact/ContactWidgetV3.tsx';
-import EventsWidgetV3 from '../widgets/Events/EventsWidgetV3.tsx';
+import EventListWidget from '../widgets/Events/EventListWidget.tsx';
 import IntroWidget from '../widgets/Intro/IntroWidget.tsx';
 import MapWidgetV3 from '../widgets/Map/MapWidgetV3.tsx';
 import PixWidgetV3 from '../widgets/Pix/PixWidgetV3.tsx';
@@ -46,12 +46,12 @@ export default function MainPage() {
       >
         {config.enableAgenda && (
           <FlexContainer id="agenda">
-            <AgendaWidgetV3 json="db/agenda_cultos.json" />
+            <AgendaWidget json="db/agenda_cultos.json" />
           </FlexContainer>
         )}
         {config.enableEvents && (
           <FlexContainer id={'events'}>
-            <EventsWidgetV3 />
+            <EventListWidget json="db/events.json" />
           </FlexContainer>
         )}
         {config.enableMap && (

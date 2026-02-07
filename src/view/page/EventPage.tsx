@@ -29,11 +29,11 @@ function InfoLine({ text, icon }: any) {
   );
 }
 
-export default function EventPage() {
+export default function EventPage({ json }: any) {
   const params = useParams();
 
   const [name] = params.eventURI!.split(':');
-  const { uiEvents } = useEventListViewModel();
+  const { uiEvents } = useEventListViewModel({ json });
   const event = uiEvents.find((e) => e.name == name);
 
   return (

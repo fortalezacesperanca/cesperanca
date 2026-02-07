@@ -1,4 +1,4 @@
-import type { IService } from "./iservice";
+import type { IService } from './iservice';
 
 export class JsonService implements IService {
   public static instance: JsonService;
@@ -12,9 +12,9 @@ export class JsonService implements IService {
   }
 
   private constructor() {
-    this.modules = import.meta.glob("/src/data/**/*.json", {
+    this.modules = import.meta.glob('/src/data/**/*.json', {
       eager: true,
-      import: "default",
+      import: 'default',
     });
   }
 
@@ -27,13 +27,13 @@ export class JsonService implements IService {
     return base64s;
   }
 
-  getByPath(path: string): string {
+  getByPath<T>(path: string): T {
     var filename = `/src/data/${path}`;
     try {
-      return this.modules[filename] as string;
+      return this.modules[filename] as T;
     } catch (err) {
       console.error(`${filename} was not found`);
     }
-    return "";
+    return null as T;
   }
 }

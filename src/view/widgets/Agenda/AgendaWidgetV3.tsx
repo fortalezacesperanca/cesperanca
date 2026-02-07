@@ -96,6 +96,97 @@ export default function AgendaWidgetV3({
   );
 }
 
+export function AgendaWidgetDep({
+  json,
+  showActionButton = true,
+}: {
+  json: string;
+  showActionButton?: boolean;
+}) {
+  const { agenda } = useAgendaListViewModel({ json });
+
+  return (
+    <Widget
+      actionButtonText={'Ver agenda completa'}
+      actionButtonLink={Routes.AGENDA}
+      showActionButton={showActionButton}
+      icon={<RiTimeFill />}
+      title="Cultos"
+    >
+      <SimpleGrid
+        gap={6}
+        columns={{
+          base: 1,
+          sm: 1,
+          md: 1,
+          lg: 2,
+        }}
+      >
+        {agenda.map((event, index) => {
+          return (
+            <Box
+              flex={1}
+              key={index}
+            >
+              <Card.Root
+                flexDirection="row"
+                overflow="hidden"
+                rounded={'lg'}
+                shadow={'md'}
+              >
+                <Box
+                  {...styles(event.eventType)}
+                  flexGrow={0}
+                  flexBasis={'200px'}
+                  flexShrink={0}
+                  display={'flex'}
+                  flexDirection={'column'}
+                  justifyContent={'center'}
+                  alignItems={'center'}
+                >
+                  <Text
+                    color={'gray.50'}
+                    textShadow={'textsm'}
+                    fontSize={'2xl'}
+                    fontFamily={'FontHeading'}
+                    textTransform={'uppercase'}
+                    fontWeight={'bold'}
+                  >
+                    {event.dayOfWeek.substring(0, 3)}
+                  </Text>
+                  <Text
+                    color={'gray.50'}
+                    textShadow={'textsm'}
+                    fontSize={'2xl'}
+                    fontFamily={'FontHeading'}
+                    fontWeight={'bold'}
+                  >
+                    {event.time}
+                  </Text>
+                </Box>
+                <Box>
+                  <Card.Body>
+                    <Card.Title mb={2}>{event.eventName}</Card.Title>
+                    <Box
+                      color={'fg'}
+                      fontSize={'sm'}
+                    >
+                      <Text>
+                        {event.dayOfWeek} - {event.time}
+                      </Text>
+                      <Text py={2}>{event.description}</Text>
+                    </Box>
+                  </Card.Body>
+                </Box>
+              </Card.Root>
+            </Box>
+          );
+        })}
+      </SimpleGrid>
+    </Widget>
+  );
+}
+
 const styles = (eventType: Model.EventType) => {
   const styleTypes: Record<Model.EventType, BoxProps> = {
     common: {

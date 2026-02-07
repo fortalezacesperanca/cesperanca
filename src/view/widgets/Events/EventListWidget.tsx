@@ -17,21 +17,20 @@ import {
 import { Link } from 'react-router';
 import { UiModel } from '../../../domain/model';
 import If from '../../components/If';
-// import { Image } from '../../components/Image';
 import { Image } from '../../components/Image';
 import { List } from '../../components/List';
 import { Widget } from '../../components/Widget';
 import { getUniqueEventURI, Routes } from '../../routes/routes';
 import { useEventListViewModel } from './Events.ViewModel';
 
-export function EventsViewModel() {}
-
-export default function EventsWidgetV3({
+export default function EventListWidget({
+  json,
   showActionButton = true,
 }: {
+  json: string;
   showActionButton?: boolean;
 }) {
-  const { uiEvents } = useEventListViewModel();
+  const { uiEvents } = useEventListViewModel({ json });
 
   return (
     <Widget

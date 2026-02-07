@@ -12,5 +12,12 @@
     "eventName": "Culto",
     "description": "No auditório da Comunidade Esperança",
     "eventType": "variant"
+  },
+  {
+    "dayOfWeek": "quinta",
+    "time": "20:00",
+    "eventName": "Escola de Líderes",
+    "description": "Curso para formação de líderes para Grupos de Relacionamento",
+    "eventType": "kids"
   }
 ]

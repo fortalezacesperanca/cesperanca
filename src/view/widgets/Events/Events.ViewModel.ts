@@ -1,10 +1,54 @@
 import { Model, UiModel } from '../../../domain/model';
+import { JsonService } from '../../../infra/services/json.service';
 import { useJSON } from '../../hooks/useJSON';
 import { Datetime } from '../../util/date.util';
 
-const json = 'db/events.json';
+/**
+ * infra
+ */
 
-export const useEventListViewModel = () => {
+export class EventMapper {
+  map(item: Record<string, any>) {
+    const [day, month, year] = item['date'].split('/');
+    const date = new Datetime(`${year}-${month}-${day}`, 'YYYY-MM-DD');
+
+    const [hour, minute] = item['time'].split(':');
+    const time = new Datetime(`${hour}-${minute}`, 'HH-mm');
+
+    return new Model.Event({
+      date: date,
+      time: time,
+      name: item['name'],
+      description: item['description'],
+      longDescription: item['longDescription'],
+      address: item['address'],
+      image: item['image'],
+      eventType: item['eventType'],
+      isEnabled: item['isEnabled'],
+    });
+  }
+}
+
+const JSON = 'db/events.json';
+export function getEventList() {
+  var service = JsonService.getInstance();
+  const data = service.getByPath<any[]>(JSON);
+
+  var events = data.map((item) => new EventMapper().map(item));
+
+  events = events.sort((a, b) => {
+    return a.date?.value.valueOf()! - b.date?.value.valueOf()!;
+  });
+
+  events = events.filter((event) => event.isEnabled);
+}
+
+export function getEventByName() {}
+
+/**
+ * view
+ */
+export const useEventListViewModel = ({ json }: any) => {
   var [data] = useJSON<any[]>({ json, defaultValue: [] });
 
   var events = data.map((item) => {
@@ -19,7 +63,7 @@ export const useEventListViewModel = () => {
     const [hour, minute] = item['time'].split(':');
     const time = new Datetime(`${hour}-${minute}`, 'HH-mm');
 
-    return new Model.EventItem({
+    return new Model.Event({
       date: date,
       time: time,
       name: item['name'],

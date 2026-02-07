@@ -31,7 +31,7 @@ export class LoadEventsUseCase
       const [hour, minute] = item['time'].split(':');
       const time = new Datetime(`${hour}-${minute}`, 'HH-mm');
 
-      return new Model.EventItem({
+      return new Model.Event({
         date: date,
         time: time,
         name: item['name'],

@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { createBrowserRouter, useLocation } from 'react-router';
 import type { UiModel } from '../../domain/model';
 import AgendaPage from '../page/AgendaPage';
+import EventListPage from '../page/EventListPage';
 import EventPage from '../page/EventPage';
-import EventsPage from '../page/EventsPage';
 import MainPage from '../page/MainPage';
 import PrivacyPage from '../page/PrivacyPage';
 import { PageTemplateV2 } from '../template/PageTemplateV2';
@@ -27,7 +27,7 @@ export const createRouter = ({ basename }: { basename: string }) => {
           },
           {
             path: Routes.EVENTS,
-            element: <EventsPage />,
+            element: <EventListPage />,
           },
           {
             path: `${Routes.EVENTS}/:eventURI`,
