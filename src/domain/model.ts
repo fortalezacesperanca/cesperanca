@@ -116,6 +116,7 @@ export namespace Model {
   export type Agenda = {
     dayOfWeek: string;
     time: string;
+    image: string;
     eventName: string;
     description: string;
     eventType: EventType;
@@ -131,17 +132,6 @@ export namespace Model {
   /**
    * Schedule Agenda
    */
-  // export type EventItem2 = {
-  //   date: string;
-  //   time: string;
-  //   name: string;
-  //   description: string;
-  //   longDescription: string;
-  //   address: string;
-  //   image: string;
-  //   eventType: EventType;
-  //   isEnabled: boolean;
-  // };
   export class Event {
     date: Datetime;
     time: Datetime;

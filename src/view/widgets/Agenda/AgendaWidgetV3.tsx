@@ -1,4 +1,11 @@
-import { Box, Card, SimpleGrid, Text, type BoxProps } from '@chakra-ui/react';
+import {
+  Box,
+  Card,
+  Image,
+  SimpleGrid,
+  Text,
+  type BoxProps,
+} from '@chakra-ui/react';
 import { RiTimeFill } from 'react-icons/ri';
 import type { Model } from '../../../domain/model';
 import { Widget } from '../../components/Widget';
@@ -20,7 +27,7 @@ export default function AgendaWidgetV3({
       actionButtonLink={Routes.AGENDA}
       showActionButton={showActionButton}
       icon={<RiTimeFill />}
-      title="Cultos"
+      title="Agenda Semanal"
     >
       <SimpleGrid
         gap={6}
@@ -52,26 +59,46 @@ export default function AgendaWidgetV3({
                   flexDirection={'column'}
                   justifyContent={'center'}
                   alignItems={'center'}
+                  position={'relative'}
                 >
-                  <Text
-                    color={'gray.50'}
-                    textShadow={'textsm'}
-                    fontSize={'2xl'}
-                    fontFamily={'FontHeading'}
-                    textTransform={'uppercase'}
-                    fontWeight={'bold'}
+                  <Box
+                    zIndex={'docked'}
+                    position={'absolute'}
+                    height={'100%'}
+                    // mixBlendMode={'saturation'}
+                    // bg="black"
+                    // filter="opacity(30%)"
+                    // opacity={'0.5'}
                   >
-                    {event.dayOfWeek.substring(0, 3)}
-                  </Text>
-                  <Text
-                    color={'gray.50'}
-                    textShadow={'textsm'}
-                    fontSize={'2xl'}
-                    fontFamily={'FontHeading'}
-                    fontWeight={'bold'}
-                  >
-                    {event.time}
-                  </Text>
+                    <Image
+                      height={'100%'}
+                      margin={'auto'}
+                      src={event.image}
+                      filter="opacity(20%) grayscale(100%)"
+                    />
+                  </Box>
+                  <Box zIndex={'docked'}>
+                    <Text
+                      color={'gray.50'}
+                      textShadow={'textsm'}
+                      fontSize={'2xl'}
+                      fontFamily={'FontHeading'}
+                      textTransform={'uppercase'}
+                      fontWeight={'bold'}
+                      textAlign={'center'}
+                    >
+                      {event.dayOfWeek.substring(0, 3)}
+                    </Text>
+                    <Text
+                      color={'gray.50'}
+                      textShadow={'textsm'}
+                      fontSize={'2xl'}
+                      fontFamily={'FontHeading'}
+                      fontWeight={'bold'}
+                    >
+                      {event.time}
+                    </Text>
+                  </Box>
                 </Box>
                 <Box>
                   <Card.Body>

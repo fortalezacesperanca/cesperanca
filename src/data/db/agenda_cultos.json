@@ -2,22 +2,25 @@
   {
     "dayOfWeek": "quarta",
     "time": "19:30",
-    "eventName": "Culto",
+    "eventName": "Culto de Oração",
     "description": "No auditório da Comunidade Esperança",
-    "eventType": "common"
-  },
-  {
-    "dayOfWeek": "domingo",
-    "time": "18:30",
-    "eventName": "Culto",
-    "description": "No auditório da Comunidade Esperança",
-    "eventType": "variant"
+    "eventType": "common",
+    "image": "images/hands.jpg"
   },
   {
     "dayOfWeek": "quinta",
     "time": "20:00",
     "eventName": "Escola de Líderes",
     "description": "Curso para formação de líderes para Grupos de Relacionamento",
-    "eventType": "kids"
+    "eventType": "kids",
+    "image": "images/hands.jpg"
+  },
+  {
+    "dayOfWeek": "domingo",
+    "time": "18:30",
+    "eventName": "Culto",
+    "description": "No auditório da Comunidade Esperança",
+    "eventType": "variant",
+    "image": "images/hands.jpg"
   }
 ]
