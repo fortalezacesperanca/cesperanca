@@ -4,7 +4,7 @@ import { Flex } from '@chakra-ui/react';
 import type { Model } from '../../domain/model';
 import { FlexContainer } from '../components/FlexContainer';
 import { useJSON } from '../hooks/useJSON';
-import AgendaWidget from '../widgets/Agenda/AgendaWidgetV3.tsx';
+import AgendaWidget from '../widgets/Agenda/AgendaListWidget.tsx';
 import ContactWidgetV3 from '../widgets/Contact/ContactWidgetV3.tsx';
 import EventListWidget from '../widgets/Events/EventListWidget.tsx';
 import IntroWidget from '../widgets/Intro/IntroWidget.tsx';

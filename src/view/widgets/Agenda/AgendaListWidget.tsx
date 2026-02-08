@@ -1,25 +1,30 @@
 import {
   Box,
+  Button,
   Card,
+  Flex,
+  Icon,
   Image,
   SimpleGrid,
   Text,
   type BoxProps,
 } from '@chakra-ui/react';
-import { RiTimeFill } from 'react-icons/ri';
+import { RiArrowRightLine, RiTimeFill } from 'react-icons/ri';
+import { Link } from 'react-router';
 import type { Model } from '../../../domain/model';
+import { InfoLine } from '../../components/InfoLine';
 import { Widget } from '../../components/Widget';
-import { Routes } from '../../routes/routes';
+import { getUniqueAgendaURI, Routes } from '../../routes/routes';
 import { useAgendaListViewModel } from './AgendaWidget.ViewModel';
 
-export default function AgendaWidgetV3({
+export default function AgendaListWidget({
   json,
   showActionButton = true,
 }: {
   json: string;
   showActionButton?: boolean;
 }) {
-  const { agenda } = useAgendaListViewModel({ json });
+  const { uiAgenda } = useAgendaListViewModel({ json });
 
   return (
     <Widget
@@ -38,7 +43,7 @@ export default function AgendaWidgetV3({
           lg: 2,
         }}
       >
-        {agenda.map((event, index) => {
+        {uiAgenda.map((item, index) => {
           return (
             <Box
               flex={1}
@@ -51,7 +56,7 @@ export default function AgendaWidgetV3({
                 shadow={'md'}
               >
                 <Box
-                  {...styles(event.eventType)}
+                  {...styles(item.eventType)}
                   flexGrow={0}
                   flexBasis={'200px'}
                   flexShrink={0}
@@ -60,6 +65,7 @@ export default function AgendaWidgetV3({
                   justifyContent={'center'}
                   alignItems={'center'}
                   position={'relative'}
+                  minHeight={'200px'}
                 >
                   <Box
                     zIndex={'docked'}
@@ -73,7 +79,7 @@ export default function AgendaWidgetV3({
                     <Image
                       height={'100%'}
                       margin={'auto'}
-                      src={event.image}
+                      src={item.image}
                       filter="opacity(20%) grayscale(100%)"
                     />
                   </Box>
@@ -87,7 +93,7 @@ export default function AgendaWidgetV3({
                       fontWeight={'bold'}
                       textAlign={'center'}
                     >
-                      {event.dayOfWeek.substring(0, 3)}
+                      {item.dayOfWeek.substring(0, 3)}
                     </Text>
                     <Text
                       color={'gray.50'}
@@ -96,22 +102,50 @@ export default function AgendaWidgetV3({
                       fontFamily={'FontHeading'}
                       fontWeight={'bold'}
                     >
-                      {event.time}
+                      {item.time}
                     </Text>
                   </Box>
                 </Box>
-                <Box>
-                  <Card.Body>
-                    <Card.Title mb={2}>{event.eventName}</Card.Title>
+                <Box width={'100%'}>
+                  <Card.Body height={'100%'}>
                     <Box
-                      color={'fg'}
-                      fontSize={'sm'}
+                      className="card.body.content"
+                      flexGrow={1}
                     >
-                      <Text>
-                        {event.dayOfWeek} - {event.time}
-                      </Text>
-                      <Text py={2}>{event.description}</Text>
+                      <Card.Title mb={2}>{item.eventName}</Card.Title>
+                      <Box
+                        color={'fg'}
+                        fontSize={'sm'}
+                      >
+                        <InfoLine
+                          text={`${item.dayOfWeek} - ${item.time}`}
+                          icon={<RiTimeFill />}
+                        />
+                        <Text
+                          py={2}
+                          dangerouslySetInnerHTML={{ __html: item.description }}
+                        ></Text>
+                      </Box>
                     </Box>
+                    {item.longDescription && (
+                      <Flex justifyContent={'flex-end'}>
+                        <Link to={getUniqueAgendaURI(item)}>
+                          <Button
+                            size={'lg'}
+                            colorPalette={'primary'}
+                            fontWeight={'bold'}
+                            _hover={{
+                              textDecoration: 'underline',
+                            }}
+                          >
+                            Ver mais
+                            <Icon>
+                              <RiArrowRightLine />
+                            </Icon>
+                          </Button>
+                        </Link>
+                      </Flex>
+                    )}
                   </Card.Body>
                 </Box>
               </Card.Root>

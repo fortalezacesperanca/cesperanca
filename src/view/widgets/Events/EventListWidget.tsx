@@ -71,7 +71,7 @@ export default function EventListWidget({
   );
 }
 
-export function Event({ event }: { event: UiModel.EventItem }) {
+export function Event({ event }: { event: UiModel.Event }) {
   return (
     <Box>
       <Card.Root

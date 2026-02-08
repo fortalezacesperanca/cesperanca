@@ -1,7 +1,16 @@
 import type { Datetime } from '../view/util/date.util';
 
+export type EventType =
+  | 'common'
+  | 'variant'
+  | 'special'
+  | 'teen'
+  | 'men'
+  | 'women'
+  | 'kids';
+
 export namespace UiModel {
-  export class EventItem {
+  export class Event {
     name: string;
     date: string;
     time: string;
@@ -15,11 +24,11 @@ export namespace UiModel {
     eventType: string;
     isEnabled: boolean = true;
 
-    private constructor(props: EventItem) {
+    private constructor(props: Event) {
       Object.assign(this, props);
     }
     static fromDomain(domain: Model.Event) {
-      return new EventItem({
+      return new Event({
         name: domain.name,
         date: domain.date.formatWith('LL'),
         day: domain.date.formatWith('DD'),
@@ -32,6 +41,31 @@ export namespace UiModel {
         address: domain.address,
         eventType: domain.eventType,
         isEnabled: domain.isEnabled,
+      });
+    }
+  }
+
+  export class Agenda {
+    dayOfWeek: string;
+    time: string;
+    image: string;
+    eventName: string;
+    description: string;
+    longDescription: string;
+    eventType: EventType;
+
+    private constructor(props: Agenda) {
+      Object.assign(this, props);
+    }
+    static fromDomain(domain: Model.Agenda) {
+      return new Agenda({
+        dayOfWeek: domain.dayOfWeek,
+        time: domain.time,
+        image: domain.image,
+        eventName: domain.eventName,
+        description: domain.description,
+        longDescription: domain.longDescription,
+        eventType: domain.eventType,
       });
     }
   }
@@ -104,21 +138,13 @@ export namespace Model {
    * Recurring Agenda
    */
 
-  export type EventType =
-    | 'common'
-    | 'variant'
-    | 'special'
-    | 'teen'
-    | 'men'
-    | 'women'
-    | 'kids';
-
   export type Agenda = {
     dayOfWeek: string;
     time: string;
     image: string;
     eventName: string;
     description: string;
+    longDescription: string;
     eventType: EventType;
   };
 

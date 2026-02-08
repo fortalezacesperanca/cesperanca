@@ -4,6 +4,7 @@
     "time": "19:30",
     "eventName": "Culto de Oração",
     "description": "No auditório da Comunidade Esperança",
+    "longDescription": "",
     "eventType": "common",
     "image": "images/hands.jpg"
   },
@@ -11,15 +12,18 @@
     "dayOfWeek": "quinta",
     "time": "20:00",
     "eventName": "Escola de Líderes",
-    "description": "Curso para formação de líderes para Grupos de Relacionamento",
+    "description": "Curso para formação de líderes para Grupos de Relacionamento <br> Inicio: 26 de fevereiro <br> Duração: 14 semanas",
+    "longDescription": "O Curso de Formação de Líderes para Grupos de Relacionamento foi desenvolvido para capacitar pessoas chamadas a cuidar de vidas, fortalecer vínculos e conduzir pequenos grupos com propósito e maturidade cristã. Ao longo do curso, os participantes serão preparados espiritualmente, emocionalmente e praticamente para liderar encontros, discipular pessoas, resolver desafios do dia a dia e viver uma liderança servidora, alinhada aos valores do Reino. É um tempo de crescimento, aprendizado e preparação para impactar vidas e fortalecer a igreja por meio de relacionamentos saudáveis e transformadores.",
     "eventType": "kids",
-    "image": "images/hands.jpg"
+    "image": "images/escola-de-lideres.jpg"
   },
   {
     "dayOfWeek": "domingo",
     "time": "18:30",
     "eventName": "Culto",
     "description": "No auditório da Comunidade Esperança",
+    "longDescription": "",
+
     "eventType": "variant",
     "image": "images/hands.jpg"
   }

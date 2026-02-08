@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { createBrowserRouter, useLocation } from 'react-router';
 import type { UiModel } from '../../domain/model';
+import AgendaListPage from '../page/AgendaListPage';
 import AgendaPage from '../page/AgendaPage';
 import EventListPage from '../page/EventListPage';
 import EventPage from '../page/EventPage';
@@ -31,11 +32,15 @@ export const createRouter = ({ basename }: { basename: string }) => {
           },
           {
             path: `${Routes.EVENTS}/:eventURI`,
-            element: <EventPage />,
+            element: <EventPage json="db/events.json" />,
           },
           {
             path: Routes.AGENDA,
-            element: <AgendaPage />,
+            element: <AgendaListPage />,
+          },
+          {
+            path: `${Routes.AGENDA}/:agendaURI`,
+            element: <AgendaPage json="db/agenda_cultos.json" />,
           },
           {
             path: Routes.PRIVACY,
@@ -50,9 +55,13 @@ export const createRouter = ({ basename }: { basename: string }) => {
   );
 };
 
-export function getUniqueEventURI(event: UiModel.EventItem) {
+export function getUniqueEventURI(event: UiModel.Event) {
   const URI = `${event.name}:${event.day}`;
   return Routes.EVENTS + '/' + encodeURIComponent(URI);
+}
+export function getUniqueAgendaURI(event: UiModel.Agenda) {
+  const URI = `${event.eventName}:${event.dayOfWeek}`;
+  return Routes.AGENDA + '/' + encodeURIComponent(URI);
 }
 
 export function useHashScroll() {

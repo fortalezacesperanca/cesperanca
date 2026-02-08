@@ -81,7 +81,7 @@ export const useEventListViewModel = ({ json }: any) => {
 
   events = events.filter((event) => event.isEnabled);
 
-  const uiEvents = events.map((d) => UiModel.EventItem.fromDomain(d));
+  const uiEvents = events.map((d) => UiModel.Event.fromDomain(d));
 
   return { uiEvents };
 };
