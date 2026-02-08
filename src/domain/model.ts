@@ -49,7 +49,7 @@ export namespace UiModel {
     dayOfWeek: string;
     time: string;
     image: string;
-    eventName: string;
+    name: string;
     description: string;
     longDescription: string;
     eventType: EventType;
@@ -62,7 +62,7 @@ export namespace UiModel {
         dayOfWeek: domain.dayOfWeek,
         time: domain.time,
         image: domain.image,
-        eventName: domain.eventName,
+        name: domain.name,
         description: domain.description,
         longDescription: domain.longDescription,
         eventType: domain.eventType,
@@ -142,7 +142,7 @@ export namespace Model {
     dayOfWeek: string;
     time: string;
     image: string;
-    eventName: string;
+    name: string;
     description: string;
     longDescription: string;
     eventType: EventType;

@@ -60,7 +60,7 @@ export function getUniqueEventURI(event: UiModel.Event) {
   return Routes.EVENTS + '/' + encodeURIComponent(URI);
 }
 export function getUniqueAgendaURI(event: UiModel.Agenda) {
-  const URI = `${event.eventName}:${event.dayOfWeek}`;
+  const URI = `${event.name}:${event.dayOfWeek}`;
   return Routes.AGENDA + '/' + encodeURIComponent(URI);
 }
 

@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { RiArrowRightLine, RiTimeFill } from 'react-icons/ri';
 import { Link } from 'react-router';
-import type { Model } from '../../../domain/model';
+import type { EventType } from '../../../domain/model';
 import { InfoLine } from '../../components/InfoLine';
 import { Widget } from '../../components/Widget';
 import { getUniqueAgendaURI, Routes } from '../../routes/routes';
@@ -65,7 +65,7 @@ export default function AgendaListWidget({
                   justifyContent={'center'}
                   alignItems={'center'}
                   position={'relative'}
-                  minHeight={'200px'}
+                  minHeight={'260px'}
                 >
                   <Box
                     zIndex={'docked'}
@@ -83,27 +83,20 @@ export default function AgendaListWidget({
                       filter="opacity(20%) grayscale(100%)"
                     />
                   </Box>
-                  <Box zIndex={'docked'}>
-                    <Text
-                      color={'gray.50'}
-                      textShadow={'textsm'}
-                      fontSize={'2xl'}
-                      fontFamily={'FontHeading'}
-                      textTransform={'uppercase'}
-                      fontWeight={'bold'}
-                      textAlign={'center'}
-                    >
-                      {item.dayOfWeek.substring(0, 3)}
-                    </Text>
-                    <Text
-                      color={'gray.50'}
-                      textShadow={'textsm'}
-                      fontSize={'2xl'}
-                      fontFamily={'FontHeading'}
-                      fontWeight={'bold'}
-                    >
-                      {item.time}
-                    </Text>
+                  <Box
+                    zIndex={'docked'}
+                    color={'gray.50'}
+                    fontSize={'2xl'}
+                    fontFamily={'FontHeading'}
+                    textTransform={'uppercase'}
+                    fontWeight={'bold'}
+                    textAlign={'center'}
+                    textShadow={
+                      'var(--chakra-shadows-textsm), var(--chakra-shadows-textmd)'
+                    }
+                  >
+                    <Text>{item.dayOfWeek}</Text>
+                    <Text>{item.time}</Text>
                   </Box>
                 </Box>
                 <Box width={'100%'}>
@@ -112,7 +105,7 @@ export default function AgendaListWidget({
                       className="card.body.content"
                       flexGrow={1}
                     >
-                      <Card.Title mb={2}>{item.eventName}</Card.Title>
+                      <Card.Title mb={2}>{item.name}</Card.Title>
                       <Box
                         color={'fg'}
                         fontSize={'sm'}
@@ -127,7 +120,7 @@ export default function AgendaListWidget({
                         ></Text>
                       </Box>
                     </Box>
-                    {item.longDescription && (
+                    {
                       <Flex justifyContent={'flex-end'}>
                         <Link to={getUniqueAgendaURI(item)}>
                           <Button
@@ -145,7 +138,7 @@ export default function AgendaListWidget({
                           </Button>
                         </Link>
                       </Flex>
-                    )}
+                    }
                   </Card.Body>
                 </Box>
               </Card.Root>
@@ -157,99 +150,8 @@ export default function AgendaListWidget({
   );
 }
 
-export function AgendaWidgetDep({
-  json,
-  showActionButton = true,
-}: {
-  json: string;
-  showActionButton?: boolean;
-}) {
-  const { agenda } = useAgendaListViewModel({ json });
-
-  return (
-    <Widget
-      actionButtonText={'Ver agenda completa'}
-      actionButtonLink={Routes.AGENDA}
-      showActionButton={showActionButton}
-      icon={<RiTimeFill />}
-      title="Cultos"
-    >
-      <SimpleGrid
-        gap={6}
-        columns={{
-          base: 1,
-          sm: 1,
-          md: 1,
-          lg: 2,
-        }}
-      >
-        {agenda.map((event, index) => {
-          return (
-            <Box
-              flex={1}
-              key={index}
-            >
-              <Card.Root
-                flexDirection="row"
-                overflow="hidden"
-                rounded={'lg'}
-                shadow={'md'}
-              >
-                <Box
-                  {...styles(event.eventType)}
-                  flexGrow={0}
-                  flexBasis={'200px'}
-                  flexShrink={0}
-                  display={'flex'}
-                  flexDirection={'column'}
-                  justifyContent={'center'}
-                  alignItems={'center'}
-                >
-                  <Text
-                    color={'gray.50'}
-                    textShadow={'textsm'}
-                    fontSize={'2xl'}
-                    fontFamily={'FontHeading'}
-                    textTransform={'uppercase'}
-                    fontWeight={'bold'}
-                  >
-                    {event.dayOfWeek.substring(0, 3)}
-                  </Text>
-                  <Text
-                    color={'gray.50'}
-                    textShadow={'textsm'}
-                    fontSize={'2xl'}
-                    fontFamily={'FontHeading'}
-                    fontWeight={'bold'}
-                  >
-                    {event.time}
-                  </Text>
-                </Box>
-                <Box>
-                  <Card.Body>
-                    <Card.Title mb={2}>{event.eventName}</Card.Title>
-                    <Box
-                      color={'fg'}
-                      fontSize={'sm'}
-                    >
-                      <Text>
-                        {event.dayOfWeek} - {event.time}
-                      </Text>
-                      <Text py={2}>{event.description}</Text>
-                    </Box>
-                  </Card.Body>
-                </Box>
-              </Card.Root>
-            </Box>
-          );
-        })}
-      </SimpleGrid>
-    </Widget>
-  );
-}
-
-const styles = (eventType: Model.EventType) => {
-  const styleTypes: Record<Model.EventType, BoxProps> = {
+const styles = (eventType: EventType) => {
+  const styleTypes: Record<EventType, BoxProps> = {
     common: {
       bgGradient: 'to-tr',
       gradientFrom: 'primary.600',

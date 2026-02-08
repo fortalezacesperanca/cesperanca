@@ -2,16 +2,16 @@
   {
     "dayOfWeek": "quarta",
     "time": "19:30",
-    "eventName": "Culto de Oração",
+    "name": "Culto de Oração",
     "description": "No auditório da Comunidade Esperança",
-    "longDescription": "",
+    "longDescription": "O Culto de Oração é um tempo especial de busca, entrega e comunhão com Deus. Às quartas-feiras, nos reunimos para fortalecer nossa fé, interceder uns pelos outros e experimentar o poder da oração que transforma realidades. É um momento de renovar as forças, alinhar o coração à vontade de Deus e crescer juntos como igreja.",
     "eventType": "common",
     "image": "images/hands.jpg"
   },
   {
     "dayOfWeek": "quinta",
     "time": "20:00",
-    "eventName": "Escola de Líderes",
+    "name": "Escola de Líderes",
     "description": "Curso para formação de líderes para Grupos de Relacionamento <br> Inicio: 26 de fevereiro <br> Duração: 14 semanas",
     "longDescription": "O Curso de Formação de Líderes para Grupos de Relacionamento foi desenvolvido para capacitar pessoas chamadas a cuidar de vidas, fortalecer vínculos e conduzir pequenos grupos com propósito e maturidade cristã. Ao longo do curso, os participantes serão preparados espiritualmente, emocionalmente e praticamente para liderar encontros, discipular pessoas, resolver desafios do dia a dia e viver uma liderança servidora, alinhada aos valores do Reino. É um tempo de crescimento, aprendizado e preparação para impactar vidas e fortalecer a igreja por meio de relacionamentos saudáveis e transformadores.",
     "eventType": "kids",
@@ -20,10 +20,9 @@
   {
     "dayOfWeek": "domingo",
     "time": "18:30",
-    "eventName": "Culto",
+    "name": "Culto",
     "description": "No auditório da Comunidade Esperança",
-    "longDescription": "",
-
+    "longDescription": "O Culto de Domingo é um momento de celebração, adoração e edificação da fé. Como igreja, nos reunimos para louvar a Deus, ouvir Sua Palavra e sermos renovados em Sua presença. É um tempo de comunhão, aprendizado e inspiração, onde famílias e vidas são fortalecidas para viver o propósito de Deus durante a semana. E, no 2º domingo de cada mês, é celebrada a Ceia do Senhor.",
     "eventType": "variant",
     "image": "images/hands.jpg"
   }

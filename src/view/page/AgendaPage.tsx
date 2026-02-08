@@ -10,7 +10,7 @@ export default function AgendaPage({ json }: any) {
 
   const [name] = params.agendaURI!.split(':');
   const { uiAgenda } = useAgendaListViewModel({ json });
-  const item = uiAgenda.find((e) => e.eventName == name);
+  const item = uiAgenda.find((e) => e.name == name);
 
   return (
     <Flex direction={'column'}>
@@ -29,7 +29,7 @@ export default function AgendaPage({ json }: any) {
               py={2}
               fontSize={'2xl'}
             >
-              {item.eventName}
+              {item.name}
             </Heading>
             <Flex direction={'column'}>
               <Text
