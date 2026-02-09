@@ -1,4 +1,8 @@
-import type { Datetime } from '../view/util/date.util';
+import { Datetime } from '../view/util/date.util';
+
+/**
+ * EventType
+ */
 
 export type EventType =
   | 'common'
@@ -8,8 +12,32 @@ export type EventType =
   | 'men'
   | 'women'
   | 'kids';
-
 export namespace UiModel {
+  export class Agenda {
+    dayOfWeek: string;
+    time: string;
+    image: string;
+    name: string;
+    description: string;
+    longDescription: string;
+    eventType: EventType;
+
+    private constructor(props: Agenda) {
+      Object.assign(this, props);
+    }
+
+    static fromDomain(domain: Model.Agenda) {
+      return new Agenda({
+        dayOfWeek: domain.dayOfWeek,
+        time: domain.time,
+        image: domain.image,
+        name: domain.name,
+        description: domain.description,
+        longDescription: domain.longDescription,
+        eventType: domain.eventType,
+      });
+    }
+  }
   export class Event {
     name: string;
     date: string;
@@ -21,7 +49,7 @@ export namespace UiModel {
     image: string;
     longDescription: string;
     address: string;
-    eventType: string;
+    eventType: EventType;
     isEnabled: boolean = true;
 
     private constructor(props: Event) {
@@ -41,31 +69,6 @@ export namespace UiModel {
         address: domain.address,
         eventType: domain.eventType,
         isEnabled: domain.isEnabled,
-      });
-    }
-  }
-
-  export class Agenda {
-    dayOfWeek: string;
-    time: string;
-    image: string;
-    name: string;
-    description: string;
-    longDescription: string;
-    eventType: EventType;
-
-    private constructor(props: Agenda) {
-      Object.assign(this, props);
-    }
-    static fromDomain(domain: Model.Agenda) {
-      return new Agenda({
-        dayOfWeek: domain.dayOfWeek,
-        time: domain.time,
-        image: domain.image,
-        name: domain.name,
-        description: domain.description,
-        longDescription: domain.longDescription,
-        eventType: domain.eventType,
       });
     }
   }
@@ -138,7 +141,7 @@ export namespace Model {
    * Recurring Agenda
    */
 
-  export type Agenda = {
+  export class Agenda {
     dayOfWeek: string;
     time: string;
     image: string;
@@ -146,7 +149,11 @@ export namespace Model {
     description: string;
     longDescription: string;
     eventType: EventType;
-  };
+
+    constructor(props: Agenda) {
+      Object.assign(this, props);
+    }
+  }
 
   export class GroupedAgenda {
     constructor(
@@ -168,8 +175,22 @@ export namespace Model {
     image: string = '';
     eventType: EventType = 'common';
     isEnabled: boolean = true;
-    constructor(props?: Partial<Event>) {
-      Object.assign(this, props);
+    constructor(item?: any) {
+      const [day, month, year] = item['date'].split('/');
+      const date = new Datetime(`${year}-${month}-${day}`, 'YYYY-MM-DD');
+
+      const [hour, minute] = item['time'].split(':');
+      const time = new Datetime(`${hour}-${minute}`, 'HH-mm');
+
+      this.date = date;
+      this.time = time;
+      this.name = item['name'];
+      this.description = item['description'];
+      this.longDescription = item['longDescription'];
+      this.address = item['address'];
+      this.image = item['image'];
+      this.eventType = item['eventType'];
+      this.isEnabled = item['isEnabled'];
     }
   }
   /**
