@@ -58,7 +58,10 @@ export default function AgendaListWidget({
                 <Box
                   {...styles(item.eventType)}
                   flexGrow={0}
-                  flexBasis={'200px'}
+                  flexBasis={{
+                    base: '150px',
+                    md: '260px',
+                  }}
                   flexShrink={0}
                   display={'flex'}
                   flexDirection={'column'}
