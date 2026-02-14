@@ -35,18 +35,10 @@ export default function AgendaPage({ json }: any) {
               <Text
                 dangerouslySetInnerHTML={{ __html: item.description }}
               ></Text>
-              {/* <InfoLine
-                text={item.date}
-                icon={<RiCalendar2Fill />}
-              /> */}
               <InfoLine
                 text={`${item.dayOfWeek} - ${item.time}`}
                 icon={<RiTimeFill />}
               />
-              {/* <InfoLine
-                text={item.address}
-                icon={<RiMapPin2Fill />}
-              /> */}
               <Box py={4}>
                 <Text> {item.longDescription}</Text>
               </Box>

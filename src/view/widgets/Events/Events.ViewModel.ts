@@ -1,4 +1,5 @@
-import { Model, UiModel } from '../../../domain/model';
+import { Model } from '../../../domain/model';
+import { UiModel } from '../../../domain/uimodel';
 import { useJSON } from '../../hooks/useJSON';
 
 /**
@@ -15,7 +16,7 @@ export const useEventListViewModel = ({ json }: any) => {
 
   events = events.filter((event) => event.isEnabled);
 
-  const uiEvents = events.map((d) => UiModel.Event.fromDomain(d));
+  const uiEvents = events.map((d) => new UiModel.Event(d));
 
   return { uiEvents };
 };

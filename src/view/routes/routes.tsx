@@ -5,14 +5,17 @@ import AgendaListPage from '../page/AgendaListPage';
 import AgendaPage from '../page/AgendaPage';
 import EventListPage from '../page/EventListPage';
 import EventPage from '../page/EventPage';
+import GroupListPage from '../page/GroupListPage';
 import MainPage from '../page/MainPage';
 import PrivacyPage from '../page/PrivacyPage';
+import TestPage from '../page/TestPage';
 import { PageTemplateV2 } from '../template/PageTemplateV2';
 
 export const Routes = {
   ROOT: '/',
   EVENTS: '/events',
   AGENDA: '/agenda',
+  GROUPS: '/groups',
   PRIVACY: '/privacy',
 };
 
@@ -22,6 +25,10 @@ export const createRouter = ({ basename }: { basename: string }) => {
       {
         element: <PageTemplateV2 />,
         children: [
+          {
+            path: '/__',
+            element: <TestPage />,
+          },
           {
             path: Routes.ROOT,
             element: <MainPage />,
@@ -41,6 +48,10 @@ export const createRouter = ({ basename }: { basename: string }) => {
           {
             path: `${Routes.AGENDA}/:agendaURI`,
             element: <AgendaPage json="db/agenda_cultos.json" />,
+          },
+          {
+            path: Routes.GROUPS,
+            element: <GroupListPage />,
           },
           {
             path: Routes.PRIVACY,

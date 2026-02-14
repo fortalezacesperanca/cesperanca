@@ -15,9 +15,10 @@ import {
   RiTimeFill,
 } from 'react-icons/ri';
 import { Link } from 'react-router';
-import { UiModel } from '../../../domain/model';
+import type { UiModel } from '../../../domain/uimodel';
 import If from '../../components/If';
 import { Image } from '../../components/Image';
+import { InfoLine } from '../../components/InfoLine';
 import { List } from '../../components/List';
 import { Widget } from '../../components/Widget';
 import { getUniqueEventURI, Routes } from '../../routes/routes';
@@ -164,12 +165,12 @@ export function Event({ event }: { event: UiModel.Event }) {
                 color={'fg'}
                 // p={6}
               >
-                <CardLine text={event.description} />
-                <CardLine
+                <InfoLine text={event.description} />
+                <InfoLine
                   text={event.time}
                   icon={<RiTimeFill />}
                 />
-                <CardLine
+                <InfoLine
                   text={event.address}
                   icon={<RiMapPin2Fill />}
                 />
@@ -195,31 +196,6 @@ export function Event({ event }: { event: UiModel.Event }) {
           </Flex>
         </Flex>
       </Card.Root>
-    </Box>
-  );
-}
-
-function CardLine({ text, icon }: any) {
-  return (
-    <Box
-      mb={2}
-      justifyContent={'left'}
-      alignItems={'center'}
-    >
-      {icon && (
-        <Icon
-          marginEnd={'2'}
-          color="accent.500"
-        >
-          {icon}
-        </Icon>
-      )}
-      <Text
-        display={'inline'}
-        fontSize={'md'}
-      >
-        {text}
-      </Text>
     </Box>
   );
 }

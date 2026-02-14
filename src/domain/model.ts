@@ -12,67 +12,6 @@ export type EventType =
   | 'men'
   | 'women'
   | 'kids';
-export namespace UiModel {
-  export class Agenda {
-    dayOfWeek: string;
-    time: string;
-    image: string;
-    name: string;
-    description: string;
-    longDescription: string;
-    eventType: EventType;
-
-    private constructor(props: Agenda) {
-      Object.assign(this, props);
-    }
-
-    static fromDomain(domain: Model.Agenda) {
-      return new Agenda({
-        dayOfWeek: domain.dayOfWeek,
-        time: domain.time,
-        image: domain.image,
-        name: domain.name,
-        description: domain.description,
-        longDescription: domain.longDescription,
-        eventType: domain.eventType,
-      });
-    }
-  }
-  export class Event {
-    name: string;
-    date: string;
-    time: string;
-    day: string;
-    dayOfWeek: string;
-    monthName: string;
-    description: string;
-    image: string;
-    longDescription: string;
-    address: string;
-    eventType: EventType;
-    isEnabled: boolean = true;
-
-    private constructor(props: Event) {
-      Object.assign(this, props);
-    }
-    static fromDomain(domain: Model.Event) {
-      return new Event({
-        name: domain.name,
-        date: domain.date.formatWith('LL'),
-        day: domain.date.formatWith('DD'),
-        dayOfWeek: domain.date.formatWith('ddd'),
-        monthName: domain.date.formatWith('MMM'),
-        time: domain.time.formatWith('HH:mm'),
-        image: domain.image,
-        description: domain.description,
-        longDescription: domain.longDescription,
-        address: domain.address,
-        eventType: domain.eventType,
-        isEnabled: domain.isEnabled,
-      });
-    }
-  }
-}
 
 export namespace Model {
   /**
@@ -136,6 +75,24 @@ export namespace Model {
     enableIntro: boolean;
     enableSocials: boolean;
   };
+
+  export class Group {
+    name: string;
+    dayOfWeek: string;
+    frequency: string;
+    target: string;
+    time: string;
+    address: string;
+    type: string;
+    image: string;
+    description: string;
+    longDescription: string;
+    isEnabled: boolean;
+
+    constructor(props: Group) {
+      Object.assign(this, props);
+    }
+  }
 
   /**
    * Recurring Agenda

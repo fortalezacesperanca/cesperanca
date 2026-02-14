@@ -1,0 +1,83 @@
+{
+  "description": "Grupos de relacionamento são ambientes de comunhão, crescimento espiritual e cuidado mútuo, onde vidas são fortalecidas através da Palavra, da oração e da convivência cristã. Nos grupos, criamos laços que vão além das reuniões — construímos uma família espiritual, onde cada pessoa é valorizada, apoiada e desafiada a crescer no propósito que Deus tem para sua vida.",
+  "data": [
+    {
+      "name": "Alfa",
+      "dayOfWeek": "quinta",
+      "frequency": "semanal",
+      "target": "casais",
+      "time": "19:30",
+      "address": "Aerolândia",
+      "type": "common",
+      "image": "images/gr-alfa.jpg",
+      "description": "Um grupo para casais que desejam fortalecer sua união, crescer espiritualmente juntos e viver o propósito de Deus para o casamento.",
+      "longDescription": "",
+      "isEnabled": "true"
+    },
+    {
+      "name": "A Marca da Promessa",
+      "dayOfWeek": "terça",
+      "frequency": "semanal",
+      "target": "casais",
+      "time": "19:30",
+      "address": "José Walter",
+      "type": "common",
+      "image": "images/gr-a-marca-da-promessa.jpg",
+      "description": "Um grupo para casais que desejam viver as promessas de Deus no casamento, fortalecendo sua aliança e sua caminhada espiritual.",
+      "longDescription": "",
+      "isEnabled": "true"
+    },
+    {
+      "name": "Êxodo",
+      "dayOfWeek": "sábado",
+      "frequency": "semanal",
+      "target": "casais",
+      "time": "17:00",
+      "type": "common",
+      "address": "Cidade dos Funcionários",
+      "image": "images/gr-exodo.jpg",
+      "description": "Um grupo para casais que desejam fortalecer seu relacionamento à luz da Palavra, crescer espiritualmente juntos e construir um lar firmado em Cristo.",
+      "longDescription": "",
+      "isEnabled": "true"
+    },
+    {
+      "name": "Mulheres de Fé",
+      "dayOfWeek": "terça",
+      "frequency": "semanal",
+      "target": "mulheres",
+      "time": "19:30",
+      "address": "Aerolândia",
+      "type": "common",
+      "image": "images/gr-mulheres-de-fe.jpg",
+      "description": "Um grupo para mulheres que desejam crescer em fé, fortalecer sua identidade em Cristo e caminhar juntas em comunhão e propósito.",
+      "longDescription": "",
+      "isEnabled": "true"
+    },
+    {
+      "name": "Semear e Colher",
+      "dayOfWeek": "quinta",
+      "frequency": "semanal",
+      "target": "homens",
+      "time": "19:30",
+      "address": "Aerolândia",
+      "type": "common",
+      "image": "images/gr-semear-e-colher.jpg",
+      "description": "Um grupo para homens que desejam crescer em caráter, fé e liderança, vivendo os princípios da semeadura e colheita na prática.",
+      "longDescription": "",
+      "isEnabled": "true"
+    },
+    {
+      "name": "Três Dobras",
+      "dayOfWeek": "terça",
+      "frequency": "semanal",
+      "target": "casais",
+      "time": "20:00",
+      "address": "Aerolândia",
+      "type": "common",
+      "image": "images/gr-tres-dobras.jpg",
+      "description": "Um grupo para casais que desejam viver um relacionamento fortalecido por Deus, formando um cordão de três dobras que não se rompe facilmente.",
+      "longDescription": "",
+      "isEnabled": "true"
+    }
+  ]
+}

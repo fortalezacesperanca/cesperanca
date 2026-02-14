@@ -3,7 +3,7 @@ import { Box, Icon, Text } from '@chakra-ui/react';
 export function InfoLine({ text, icon }: any) {
   return (
     <Box
-      my={2}
+      mb={2}
       justifyContent={'left'}
       alignItems={'center'}
     >
