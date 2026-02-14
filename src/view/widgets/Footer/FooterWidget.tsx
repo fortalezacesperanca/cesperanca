@@ -89,7 +89,7 @@ export const FooterWidget = () => {
                 return (
                   <Link
                     key={item.text}
-                    to={item.link}
+                    to={item.link!}
                   >
                     <Text
                       _hover={{

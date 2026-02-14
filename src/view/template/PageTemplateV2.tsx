@@ -9,8 +9,8 @@ import { useHashScroll, useScrollToTop } from '../routes/routes';
 import { BottomBarWidget } from '../widgets/BottomBar/BottomBarWidget';
 import { FooterWidget } from '../widgets/Footer/FooterWidget';
 import { HeaderWidget } from '../widgets/Header/HeaderWidget';
-import { NavigationWidget } from '../widgets/Navigation/NavigationWidget';
-import { NavigationTopWidget } from '../widgets/NavigationTop/NavigationTopWidget';
+import { NavigationMobileWidget } from '../widgets/Navigation/NavigationMobileWidget';
+import { NavigationDesktopWidget } from '../widgets/NavigationTop/NavigationDesktopWidget';
 
 type PageTemplateV2 = {};
 
@@ -63,7 +63,7 @@ export const PageTemplateV2 = ({}: PageTemplateV2) => {
                   lg: 'block',
                 }}
               >
-                <NavigationTopWidget
+                <NavigationDesktopWidget
                   path={'db/navigation_desktop_header.json'}
                 />
               </Box>
@@ -101,7 +101,7 @@ export const PageTemplateV2 = ({}: PageTemplateV2) => {
               lg: 'none',
             }}
           >
-            <NavigationWidget path="db/navigation_mobile.json" />
+            <NavigationMobileWidget path="db/navigation_mobile.json" />
           </Box>
         </Box>
       </Grid>

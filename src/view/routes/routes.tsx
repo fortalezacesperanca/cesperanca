@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createBrowserRouter, useLocation } from 'react-router';
-import type { UiModel } from '../../domain/model';
+import type { UiModel } from '../../domain/uimodel';
 import AgendaListPage from '../page/AgendaListPage';
 import AgendaPage from '../page/AgendaPage';
 import EventListPage from '../page/EventListPage';

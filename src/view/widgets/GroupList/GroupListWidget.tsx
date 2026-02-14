@@ -29,7 +29,7 @@ export const GroupListWidget = (props: { json: string }) => {
           md: 3,
         }}
       >
-        <If condition={groups.length}>
+        <If condition={groups.length > 0}>
           {groups.map((item) => {
             return <Group group={item}></Group>;
           })}

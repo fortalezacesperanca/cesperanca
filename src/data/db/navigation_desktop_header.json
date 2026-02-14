@@ -12,6 +12,10 @@
     "link": "/events"
   },
   {
+    "text": "Grupos",
+    "link": "/groups"
+  },
+  {
     "text": "Endereço",
     "link": "/#map"
   },

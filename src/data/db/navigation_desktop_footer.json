@@ -20,6 +20,10 @@
     "link": "/events"
   },
   {
+    "text": "Grupos",
+    "link": "/groups"
+  },
+  {
     "text": "Ofertas",
     "link": "/#offering"
   }

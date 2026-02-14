@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import type { Model } from '../../../domain/model';
 import { useJSON } from '../../hooks/useJSON';
 
-export const NavigationTopWidget = ({ path }: { path: string }) => {
+export const NavigationDesktopWidget = ({ path }: { path: string }) => {
   var [menu] = useJSON<Model.Menu>({ json: path, defaultValue: [] });
 
   return (
@@ -18,7 +18,7 @@ export const NavigationTopWidget = ({ path }: { path: string }) => {
         return (
           <Link
             key={item.text}
-            to={item.link}
+            to={item.link!}
             style={{
               display: 'inline-flex',
               padding: 0,

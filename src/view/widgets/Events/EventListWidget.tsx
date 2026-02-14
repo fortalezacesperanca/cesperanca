@@ -51,10 +51,10 @@ export default function EventListWidget({
           xl: 1,
         }}
       >
-        <If condition={!uiEvents.length}>
+        <If condition={uiEvents.length == 0}>
           <Text>Ainda não há eventos. Acompanhe para não perder!</Text>
         </If>
-        <If condition={uiEvents.length}>
+        <If condition={uiEvents.length > 0}>
           <List
             list={uiEvents}
             renderItem={(item, index) => {

@@ -19,8 +19,8 @@ export namespace Model {
    */
   export type MenuItem = {
     text: string;
-    link: string;
-    icon: string;
+    link?: string;
+    children?: MenuItem[];
   };
   export type Menu = MenuItem[];
 

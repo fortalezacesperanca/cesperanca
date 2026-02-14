@@ -8,11 +8,20 @@
     "link": "/#agenda"
   },
   {
-    "text": "Eventos",
-    "link": "/#events"
-  },
-  {
     "text": "Endereço",
     "link": "/#map"
+  },
+  {
+    "text": "Mais",
+    "children": [
+      {
+        "text": "Eventos",
+        "link": "/#events"
+      },
+      {
+        "text": "Grupos",
+        "link": "/groups"
+      }
+    ]
   }
 ]

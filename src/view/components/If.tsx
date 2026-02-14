@@ -1,3 +1,11 @@
-export default function If({ condition, children }: any) {
+import type React from 'react';
+
+export default function If({
+  condition,
+  children,
+}: {
+  condition: boolean;
+  children: React.ReactNode;
+}) {
   return <>{condition ? children : null}</>;
 }
