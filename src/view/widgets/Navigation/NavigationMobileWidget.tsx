@@ -8,6 +8,7 @@ import {
   RiHeart2Fill,
   RiHomeHeartFill,
   RiMapPin2Fill,
+  RiMessage2Fill,
   RiMoreFill,
   RiPlayLargeFill,
 } from 'react-icons/ri';
@@ -61,6 +62,11 @@ const navigationIcons: Record<string, React.ReactNode> = {
   Mais: (
     <IconWithShadow>
       <RiMoreFill />
+    </IconWithShadow>
+  ),
+  Contato: (
+    <IconWithShadow>
+      <RiMessage2Fill />
     </IconWithShadow>
   ),
 };

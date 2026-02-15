@@ -21,6 +21,14 @@
       {
         "text": "Grupos",
         "link": "/groups"
+      },
+      {
+        "text": "Ofertas",
+        "link": "/#offering"
+      },
+      {
+        "text": "Contato",
+        "link": "/#contact"
       }
     ]
   }
