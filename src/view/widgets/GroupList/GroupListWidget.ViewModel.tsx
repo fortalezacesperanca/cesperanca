@@ -1,21 +1,20 @@
 import { Model } from '../../../domain/model';
 import { UiModel } from '../../../domain/uimodel';
-import { useJSON } from '../../hooks/useJSON';
+import { useJSONData } from '../../hooks/useJSON';
 
-export class JSONData {
-  description: string = '';
-  data: any[] = [];
-}
+export function useGroupListViewModel() {
+  var data = useJSONData<Model.Group[]>('db/grupos.json', []);
+  var meta = useJSONData<{ name: string; description: string }>(
+    'db/grupos_meta.json',
+    [],
+  );
 
-export function useGroupListViewModel({ json }: { json: string }) {
-  var [raw] = useJSON<JSONData>({ json, defaultValue: new JSONData() });
+  var { name, description } = meta;
 
-  const description = raw.description;
-
-  const groups = raw.data
+  const groups = data
     .map((i) => new Model.Group(i))
     .filter((i) => i.isEnabled)
     .map((i) => new UiModel.Group(i));
 
-  return { groups, description };
+  return { groups, name, description };
 }

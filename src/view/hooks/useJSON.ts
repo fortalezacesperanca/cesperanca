@@ -21,3 +21,16 @@ export function useJSON<T>({
 
   return [data];
 }
+export function useJSONData<T>(json: string, defaultValue: any) {
+  var service = JsonService.getInstance();
+  const [data, trigger, _] = usePromise<T>({
+    fn: () => service.getByPath(json),
+    defaultValue: defaultValue,
+  });
+
+  useEffect(() => {
+    trigger();
+  }, []);
+
+  return data;
+}

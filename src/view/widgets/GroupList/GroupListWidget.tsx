@@ -11,14 +11,14 @@ import { InfoLine } from '../../components/InfoLine';
 import { Widget } from '../../components/Widget';
 import { useGroupListViewModel } from './GroupListWidget.ViewModel';
 
-export const GroupListWidget = (props: { json: string }) => {
-  const { groups, description } = useGroupListViewModel({ json: props.json });
+export const GroupListWidget = () => {
+  const { groups, description, name } = useGroupListViewModel();
 
   return (
     <Widget
       showActionButton={false}
       icon={<RiGroup3Fill />}
-      title="Grupos de Relacionamento"
+      title={name}
     >
       <Text>{description}</Text>
       <SimpleGrid

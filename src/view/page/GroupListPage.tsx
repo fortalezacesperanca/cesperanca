@@ -6,7 +6,7 @@ export default function GroupListPage() {
     <Flex direction={'column'}>
       <Flex>
         <Container>
-          <GroupListWidget json="db/grupos.json" />
+          <GroupListWidget />
         </Container>
       </Flex>
     </Flex>
