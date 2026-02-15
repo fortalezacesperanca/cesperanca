@@ -31,15 +31,11 @@ html {
   font-weight: bold;
   font-display: swap;
 }
-/* @font-face {
-  font-family: 'FontText';
-  src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
-  font-weight: 500;
-  font-display: swap;
+
+a:focus,
+button:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: none !important;
 }
-@font-face {
-  font-family: 'FontText';
-  src: url('/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
-  font-weight: bold;
-  font-display: swap;
-} */

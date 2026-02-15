@@ -94,6 +94,7 @@ export const PageTemplateV2 = ({}: PageTemplateV2) => {
         </Flex>
         <Box zIndex={'sticky'}>
           <Box
+            // height={fixedBottomHeight}
             display={{
               base: 'block',
               sm: 'block',

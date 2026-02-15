@@ -1,7 +1,6 @@
-import { Box, Flex, Icon, Menu, Portal, Text } from '@chakra-ui/react';
+import { Button, Flex, Icon, Menu, Portal, Text } from '@chakra-ui/react';
 
 import type React from 'react';
-import { forwardRef } from 'react';
 import {
   RiCalendar2Fill,
   RiCalendarScheduleFill,
@@ -72,14 +71,11 @@ export const NavigationMobileWidget = ({ path }: { path: string }) => {
   return (
     <Flex
       bg="primary.700"
-      // bgGradient="to-b"
-      // gradientFrom="accent.400"
-      // gradientVia={"primary.600"}
-      // gradientTo="primary.700"
       color="fg"
       shadow="mdreverse"
-      p={2}
+      // py={4}
       width={'100dvw'}
+      height={'72px'}
     >
       <Flex
         justifyContent={'space-between'}
@@ -110,22 +106,16 @@ export function MoreMenuItem({ item }: { item: Model.MenuItem }) {
         <MenuItem item={item} />
       </Menu.Trigger>
       <Portal>
-        <Menu.Positioner
-          // border={'1px solid red'}
-          bg={'primary'}
-        >
+        <Menu.Positioner>
           <Menu.Content
             overflow={'hidden'}
-            bg={'primary.bg'}
+            bg="primary.700"
           >
             {item.children?.map((subitem) => {
               return (
                 <Menu.Item
                   value={subitem.text}
                   key={subitem.text}
-                  _focus={{
-                    outline: 'none',
-                  }}
                   _hover={{
                     bg: 'transparent',
                   }}
@@ -144,32 +134,23 @@ export function MoreMenuItem({ item }: { item: Model.MenuItem }) {
   );
 }
 
-export const MenuItem = forwardRef(function (
-  props: {
-    item: Model.MenuItem;
-  },
-  ref,
-) {
+export const MenuItem = function (props: { item: Model.MenuItem }) {
   return (
-    <Box
-      ref={ref} // 👈 precisa repassar
-      {...props} // 👈 precisa espalhar
-      bg={'primary.bg'}
+    <Button
+      // ref={ref} // 👈 precisa repassar
+      // {...props} // 👈 precisa espalhar
+      bg={'transparent'}
       color="gray.50"
       fontFamily={'FontHeading'}
       fontWeight={'bold'}
-      fontSize={'md'}
-      paddingY={2}
+      h={'16'}
+      textStyle={'md'}
       _hover={{
         bg: 'primary.800',
       }}
       _active={{
         bg: 'primary.400',
       }}
-      _focus={{
-        outline: 'none',
-      }}
-      // border={'3px solid red'}
       width={'100%'}
     >
       <Flex
@@ -184,9 +165,9 @@ export const MenuItem = forwardRef(function (
           {props.item.text}
         </Text>
       </Flex>
-    </Box>
+    </Button>
   );
-});
+};
 
 export function MenuLink({ item }: { item: Model.MenuItem }) {
   return (
@@ -194,12 +175,6 @@ export function MenuLink({ item }: { item: Model.MenuItem }) {
       key={item.text}
       to={item.link!}
       style={{
-        // border: '3px solid yellow',
-        // display: 'inline-flex',
-        // padding: 0,
-        // margin: 0,
-        // flexGrow: 1,
-        // justifyContent: 'center',
         width: '100%',
       }}
     >
