@@ -14,7 +14,7 @@ import { Anchor } from '../../components/Anchor';
 import { useColorModeValue } from '../../components/ColorMode';
 import { Map } from '../../components/Map';
 import { Widget } from '../../components/Widget';
-import { useConfig, useConfigContext } from '../../contexts/ConfigContext';
+import { useConfigContext } from '../../contexts/ConfigContext';
 import { useJSON } from '../../hooks/useJSON';
 
 export default function MapWidget() {
@@ -23,7 +23,6 @@ export default function MapWidget() {
     defaultValue: [],
   });
 
-  var [config] = useConfig();
   const { isMapPrivacyAccepted, acceptMapPrivacy, declineMapPrivacy } =
     useConfigContext();
 
