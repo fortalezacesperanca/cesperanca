@@ -17,7 +17,7 @@ export const Map = ({
       title="GoogleMap"
       src={src}
       width="100%"
-      height={height}
+      height={'100%'}
       style={{ border: 0 }}
       loading="eager"
     />

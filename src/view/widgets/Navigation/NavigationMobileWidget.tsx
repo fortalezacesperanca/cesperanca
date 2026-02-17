@@ -1,12 +1,13 @@
-import { Button, Flex, Icon, Menu, Portal, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, Menu, Portal, Text } from '@chakra-ui/react';
 
-import type React from 'react';
+import React from 'react';
 import {
   RiCalendar2Fill,
   RiCalendarScheduleFill,
   RiGroup3Fill,
   RiHeart2Fill,
   RiHomeHeartFill,
+  RiKeyFill,
   RiMapPin2Fill,
   RiMessage2Fill,
   RiMoreFill,
@@ -69,6 +70,11 @@ const navigationIcons: Record<string, React.ReactNode> = {
       <RiMessage2Fill />
     </IconWithShadow>
   ),
+  Privacidade: (
+    <IconWithShadow>
+      <RiKeyFill />
+    </IconWithShadow>
+  ),
 };
 
 export const NavigationMobileWidget = ({ path }: { path: string }) => {
@@ -88,16 +94,16 @@ export const NavigationMobileWidget = ({ path }: { path: string }) => {
         width={'md'}
         margin={'auto'}
       >
-        {menu.map((item) => {
+        {menu.map((item, index) => {
           return (
-            <>
+            <Box key={index}>
               <If condition={item.link != null}>
                 <MenuLink item={item} />
               </If>
               <If condition={item.link == null}>
                 <MoreMenuItem item={item} />
               </If>
-            </>
+            </Box>
           );
         })}
       </Flex>
@@ -108,8 +114,13 @@ export const NavigationMobileWidget = ({ path }: { path: string }) => {
 export function MoreMenuItem({ item }: { item: Model.MenuItem }) {
   return (
     <Menu.Root size={'md'}>
-      <Menu.Trigger width={'100%'}>
-        <MenuItem item={item} />
+      <Menu.Trigger
+        width={'100%'}
+        asChild
+      >
+        <a>
+          <MenuItem item={item} />
+        </a>
       </Menu.Trigger>
       <Portal>
         <Menu.Positioner>
@@ -140,11 +151,14 @@ export function MoreMenuItem({ item }: { item: Model.MenuItem }) {
   );
 }
 
-export const MenuItem = function (props: { item: Model.MenuItem }) {
+export const MenuItem = React.forwardRef<
+  HTMLButtonElement,
+  { item: Model.MenuItem }
+>(function MenuItem(props, ref) {
   return (
     <Button
-      // ref={ref} // 👈 precisa repassar
-      // {...props} // 👈 precisa espalhar
+      ref={ref}
+      {...props}
       bg={'transparent'}
       color="gray.50"
       fontFamily={'FontHeading'}
@@ -173,7 +187,7 @@ export const MenuItem = function (props: { item: Model.MenuItem }) {
       </Flex>
     </Button>
   );
-};
+});
 
 export function MenuLink({ item }: { item: Model.MenuItem }) {
   return (

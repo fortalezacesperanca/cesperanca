@@ -6,7 +6,7 @@ export function useGroupListViewModel() {
   var data = useJSONData<Model.Group[]>('db/grupos.json', []);
   var meta = useJSONData<{ name: string; description: string }>(
     'db/grupos_meta.json',
-    [],
+    {},
   );
 
   var { name, description } = meta;

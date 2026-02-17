@@ -8,6 +8,7 @@ import './view/index.css';
 import { system } from './view/theme/index';
 
 import { DiContainer } from './main/di/container.ts';
+import { ConfigProvider } from './view/contexts/ConfigContext.tsx';
 import { DiContext } from './view/contexts/DiContext.ts';
 
 function Main() {
@@ -16,25 +17,27 @@ function Main() {
   return (
     <StrictMode>
       <DiContext.Provider value={{ container: diContainer.container }}>
-        <ChakraProvider value={system}>
-          <Global
-            styles={{
-              html: {
-                width: '100%',
-                overflowX: 'hidden',
-              },
-              body: {
-                margin: 0,
-                padding: 0,
-                width: '100%',
-                overflowX: 'hidden',
-              },
-            }}
-          />
-          <ThemeProvider attribute="class">
-            <App />
-          </ThemeProvider>
-        </ChakraProvider>
+        <ConfigProvider>
+          <ChakraProvider value={system}>
+            <Global
+              styles={{
+                html: {
+                  width: '100%',
+                  overflowX: 'hidden',
+                },
+                body: {
+                  margin: 0,
+                  padding: 0,
+                  width: '100%',
+                  overflowX: 'hidden',
+                },
+              }}
+            />
+            <ThemeProvider attribute="class">
+              <App />
+            </ThemeProvider>
+          </ChakraProvider>
+        </ConfigProvider>
       </DiContext.Provider>
     </StrictMode>
   );

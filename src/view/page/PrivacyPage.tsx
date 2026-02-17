@@ -1,5 +1,84 @@
-import { Container, Flex, Heading, Text } from '@chakra-ui/react';
+import {
+  Button,
+  CloseButton,
+  Container,
+  Dialog,
+  Flex,
+  Heading,
+  Portal,
+} from '@chakra-ui/react';
 import { Anchor } from '../components/Anchor';
+
+export function PrivacyModal({
+  open,
+  onDecline,
+  onCancel,
+  onAccept,
+}: {
+  open: boolean;
+  onDecline: () => void;
+  onCancel: () => void;
+  onAccept: () => void;
+}) {
+  return (
+    <Dialog.Root
+      closeOnInteractOutside={false}
+      modal={false}
+      placement={'bottom'}
+      // defaultOpen={true}
+      open={open}
+    >
+      <Dialog.Trigger asChild>
+        {/* <Button
+          variant="outline"
+          size="sm"
+        >
+          Open Dialog
+        </Button> */}
+      </Dialog.Trigger>
+      <Portal>
+        <Dialog.Positioner pointerEvents="none">
+          <Dialog.Content>
+            <Dialog.Header>
+              <Dialog.Title>Aviso de Privacidade</Dialog.Title>
+            </Dialog.Header>
+            <Dialog.Body>
+              <p>
+                Utilizamos conteúdo do Google Maps que pode instalar cookies.
+              </p>
+              <p>O mapa será carregado apenas mediante sua autorização.</p>
+              <p>Você pode aceitar ou recusar o uso desses cookies.</p>
+            </Dialog.Body>
+            <Dialog.Footer>
+              {/* <Dialog.ActionTrigger asChild> */}
+              <Button
+                onClick={() => onDecline()}
+                colorPalette={'primary'}
+                variant="outline"
+              >
+                Recusar
+              </Button>
+              {/* </Dialog.ActionTrigger> */}
+              {/* </Dialog.ActionTrigger> */}
+              <Button
+                onClick={() => onAccept()}
+                colorPalette={'primary'}
+              >
+                Aceitar
+              </Button>
+            </Dialog.Footer>
+            <Dialog.CloseTrigger asChild>
+              <CloseButton
+                size="sm"
+                onClick={() => onCancel()}
+              />
+            </Dialog.CloseTrigger>
+          </Dialog.Content>
+        </Dialog.Positioner>
+      </Portal>
+    </Dialog.Root>
+  );
+}
 
 export default function PrivacyPage() {
   return (
@@ -7,30 +86,30 @@ export default function PrivacyPage() {
       <Flex>
         <Container>
           <Heading>Aviso sobre o uso de cookies </Heading>
+
           <Flex
             py={12}
             direction={'column'}
             gap={4}
           >
-            <Text>
-              Este site não processa, armazena nem utiliza cookies próprios para
-              coleta de dados, estatísticas, marketing ou rastreamento de
-              usuários.
-            </Text>
-            <Text>
-              Os únicos cookies eventualmente utilizados são cookies de
-              terceiros do Google Maps, necessários exclusivamente para o
-              funcionamento e exibição do mapa incorporado no site.
-            </Text>
-            <Text>
-              Esses cookies são gerenciados e controlados diretamente pelo
-              Google, de acordo com suas próprias políticas de privacidade e uso
-              de dados.
-            </Text>
-            <Text>
-              O uso do Google Maps está sujeito às Políticas de Privacidade do
-              Google, que podem ser consultadas no link abaixo:
-            </Text>
+            <p>
+              Este site não utiliza cookies próprios para coleta de dados,
+              estatísticas, marketing ou rastreamento de usuários.
+            </p>
+            <p>
+              O mapa disponibilizado no site é fornecido pelo Google Maps e
+              somente é carregado mediante autorização prévia do usuário.
+            </p>
+            <p>
+              Ao optar por exibir o mapa, poderão ser instalados cookies de
+              terceiros do Google, necessários para o funcionamento e exibição
+              do serviço.
+            </p>
+            <p>
+              Esses cookies são gerenciados diretamente pelo Google, conforme
+              suas próprias políticas de privacidade e tratamento de dados.
+            </p>
+            <p>A Política de Privacidade do Google pode ser consultada em:</p>
 
             <Anchor
               text="https://policies.google.com/privacy"
@@ -38,10 +117,11 @@ export default function PrivacyPage() {
               target="_blank"
             />
 
-            <Text>
-              Ao continuar navegando ou utilizar o Google Maps, você concorda
-              com os termos definidos pelo Google.
-            </Text>
+            <p>
+              O usuário pode revogar seu consentimento a qualquer momento,
+              excluindo os cookies do navegador ou deixando de utilizar a
+              funcionalidade de mapa.
+            </p>
           </Flex>
         </Container>
       </Flex>

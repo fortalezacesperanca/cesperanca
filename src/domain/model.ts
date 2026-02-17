@@ -1,3 +1,5 @@
+import { Type } from 'class-transformer';
+import 'reflect-metadata'; // Required for decorators to work
 import { Datetime } from '../view/util/date.util';
 
 /**
@@ -61,20 +63,50 @@ export namespace Model {
   /**
    * Config
    */
-  export type Config = {
-    enableSlides: boolean;
-    enableAgenda: boolean;
-    enableAgendaV2: boolean;
-    enableEvents: boolean;
-    enableEventsV2: boolean;
-    enableMap: boolean;
-    enableContact: boolean;
-    enablePhotoGrid: boolean;
-    enableOffering: boolean;
-    enableQuote: boolean;
-    enableIntro: boolean;
-    enableSocials: boolean;
-  };
+
+  export class Consent {
+    consent: 'accepted' | 'declined' | 'none' = 'none';
+    constructor(consent: 'accepted' | 'declined' | 'none' = 'none') {
+      this.consent = consent;
+    }
+    accept() {
+      this.consent = 'accepted';
+    }
+    decline() {
+      this.consent = 'declined';
+    }
+    none() {
+      this.consent = 'none';
+    }
+  }
+  export class Privacy {
+    @Type(() => Consent)
+    map: Consent = new Consent();
+
+    @Type(() => Consent)
+    analytics: Consent = new Consent();
+  }
+  export class Config {
+    @Type(() => Privacy)
+    privacy: Privacy = new Privacy();
+
+    async hash() {
+      const str = JSON.stringify(this, Object.keys(this).sort());
+
+      // 2. Codificar como UTF-8
+      const msgBuffer = new TextEncoder().encode(str);
+
+      // 3. Hash do buffer
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+
+      // 4. Converter ArrayBuffer para Hex string
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray
+        .map((b) => b.toString(16).padStart(2, '0'))
+        .join('');
+      return hashHex;
+    }
+  }
 
   export class Group {
     name: string;

@@ -9,7 +9,8 @@ import GroupListPage from '../page/GroupListPage';
 import MainPage from '../page/MainPage';
 import PrivacyPage from '../page/PrivacyPage';
 import TestPage from '../page/TestPage';
-import { PageTemplateV2 } from '../template/PageTemplateV2';
+import { GlobalPage } from '../template/GlobalPage';
+import { PageTemplate } from '../template/PageTemplate';
 
 export const Routes = {
   ROOT: '/',
@@ -23,39 +24,44 @@ export const createRouter = ({ basename }: { basename: string }) => {
   return createBrowserRouter(
     [
       {
-        element: <PageTemplateV2 />,
+        element: <GlobalPage />,
         children: [
           {
-            path: '/__',
-            element: <TestPage />,
-          },
-          {
-            path: Routes.ROOT,
-            element: <MainPage />,
-          },
-          {
-            path: Routes.EVENTS,
-            element: <EventListPage />,
-          },
-          {
-            path: `${Routes.EVENTS}/:eventURI`,
-            element: <EventPage json="db/events.json" />,
-          },
-          {
-            path: Routes.AGENDA,
-            element: <AgendaListPage />,
-          },
-          {
-            path: `${Routes.AGENDA}/:agendaURI`,
-            element: <AgendaPage json="db/agenda_cultos.json" />,
-          },
-          {
-            path: Routes.GROUPS,
-            element: <GroupListPage />,
-          },
-          {
-            path: Routes.PRIVACY,
-            element: <PrivacyPage />,
+            element: <PageTemplate />,
+            children: [
+              {
+                path: '/__',
+                element: <TestPage />,
+              },
+              {
+                path: Routes.ROOT,
+                element: <MainPage />,
+              },
+              {
+                path: Routes.EVENTS,
+                element: <EventListPage />,
+              },
+              {
+                path: `${Routes.EVENTS}/:eventURI`,
+                element: <EventPage json="db/events.json" />,
+              },
+              {
+                path: Routes.AGENDA,
+                element: <AgendaListPage />,
+              },
+              {
+                path: `${Routes.AGENDA}/:agendaURI`,
+                element: <AgendaPage json="db/agenda_cultos.json" />,
+              },
+              {
+                path: Routes.GROUPS,
+                element: <GroupListPage />,
+              },
+              {
+                path: Routes.PRIVACY,
+                element: <PrivacyPage />,
+              },
+            ],
           },
         ],
       },

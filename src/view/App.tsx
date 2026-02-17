@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { RouterProvider } from 'react-router/dom';
 import { Env } from '../config/env';
 import { Model } from '../domain/model';
-import { Analytics } from '../infra/analytics/analytics';
 import { useJSON } from './hooks/useJSON';
 import './i18n/i18n';
 import { createRouter } from './routes/routes';
@@ -13,7 +12,7 @@ function App() {
   Env.init(import.meta.env.VITE_TARGET);
 
   useEffect(() => {
-    new Analytics();
+    // new Analytics();
   }, []);
 
   const router = createRouter({
@@ -32,6 +31,7 @@ function App() {
         name="description"
         content={global?.meta?.description}
       />
+
       <Container
         maxWidth={'full'}
         m={0}

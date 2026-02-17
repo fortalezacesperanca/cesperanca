@@ -29,6 +29,10 @@
       {
         "text": "Contato",
         "link": "/#contact"
+      },
+      {
+        "text": "Privacidade",
+        "link": "/privacy"
       }
     ]
   }
