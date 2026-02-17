@@ -1,9 +1,7 @@
 export const Map = ({
-  height = '400px',
   address,
   className = '',
 }: {
-  height?: string;
   className?: string;
   address: string;
 }) => {

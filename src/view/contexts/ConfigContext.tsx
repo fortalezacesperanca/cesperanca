@@ -1,9 +1,13 @@
 import { instanceToPlain, plainToInstance } from 'class-transformer';
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
 import { useLocalStorage } from 'react-use';
 import { Model } from '../../domain/model';
 
-export type ConfigContextProps = {};
+export type ConfigContextProps = {
+  isMapPrivacyAccepted: boolean;
+  acceptMapPrivacy: () => void;
+  declineMapPrivacy: () => void;
+};
 
 export const ConfigContext = createContext<ConfigContextProps>(
   {} as ConfigContextProps,
@@ -17,18 +21,13 @@ export function useConfig(): [
 ] {
   const [config, setConfig] = useLocalStorage<Model.Config>(
     KEY,
-    // new Model.Config(),
     plainToInstance(Model.Config, {}),
     {
       serializer: (instance) => {
-        // return JSON.stringify(v);
         return JSON.stringify(instanceToPlain(instance));
       },
       deserializer: (plain) => {
         try {
-          // const c = new Model.Config(JSON.parse(v));
-          // console.log({ c });
-          // return c;
           return plainToInstance(Model.Config, JSON.parse(plain));
         } catch (err) {
           return plainToInstance(Model.Config, {});
@@ -48,9 +47,8 @@ export const useConfigContext = () => useContext(ConfigContext);
 
 export function ConfigProvider({ children }: { children: React.ReactNode }) {
   const [config, setConfig] = useConfig();
-  const [isPrivacyAskNextTime, setPrivacyAskNextTime] = useState(false);
 
-  const isMapPrivacyAccepted = useMemo(() => {
+  const isMapPrivacyAccepted = useMemo<boolean>(() => {
     return config.privacy.map.consent == 'accepted';
   }, [config]);
 
