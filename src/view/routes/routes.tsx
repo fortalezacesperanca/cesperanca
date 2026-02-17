@@ -105,16 +105,9 @@ export function useHashScroll() {
   return null;
 }
 
-export function useScrollToTop({
-  ref,
-}: {
-  ref: React.RefObject<HTMLDivElement>;
-}) {
+export function useScrollToTop({ ref }: { ref: React.RefObject<any> }) {
   const { pathname } = useLocation();
   useEffect(() => {
-    console.log('changeed', ref);
-    setTimeout(() => {
-      ref.current.scrollTo({ top: 0 });
-    }, 50);
+    ref.current.scrollTo({ top: 0 });
   }, [pathname]);
 }

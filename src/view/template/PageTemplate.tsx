@@ -1,5 +1,5 @@
 import { Box, Flex, Grid, useBreakpointValue } from '@chakra-ui/react';
-import { Outlet, ScrollRestoration } from 'react-router';
+import { Outlet, useOutletContext } from 'react-router';
 import type { Model } from '../../domain/model';
 import { CustomLogo } from '../components/custom/CustomLogo';
 import { FlexContainer } from '../components/FlexContainer';
@@ -9,10 +9,11 @@ import { FooterWidget } from '../widgets/Footer/FooterWidget';
 import { HeaderWidget } from '../widgets/Header/HeaderWidget';
 import { NavigationMobileWidget } from '../widgets/Navigation/NavigationMobileWidget';
 import { NavigationDesktopWidget } from '../widgets/NavigationTop/NavigationDesktopWidget';
+import type { OutletContext } from './GlobalPage';
 
-type PageTemplateV2 = {};
+export const PageTemplate = () => {
+  const { pageRef } = useOutletContext<OutletContext>();
 
-export const PageTemplate = ({}: PageTemplateV2) => {
   const height = '100dvh';
 
   const [global] = useJSON<Model.Global>({
@@ -39,6 +40,7 @@ export const PageTemplate = ({}: PageTemplateV2) => {
           direction={'column'}
           height={`calc(${height} - ${fixedBottomHeight})`}
           overflow={'auto'}
+          ref={pageRef}
         >
           <Box
             as="header"
@@ -68,8 +70,8 @@ export const PageTemplate = ({}: PageTemplateV2) => {
             py={6}
             flex="1"
           >
-            <ScrollRestoration />
             <Outlet />
+            {/* {children} */}
           </Box>
           <Box as="footer">
             <Box

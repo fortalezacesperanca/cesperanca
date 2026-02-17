@@ -82,7 +82,7 @@ function PrivacyForm() {
     >
       <PrivacySwitch
         text="Google Maps"
-        description="Permite uso de dados para funcionamento do Google Maps"
+        description="Permite instalação de cookies para funcionamento do Google Maps"
         checked={isMapPrivacyAccepted}
         onCheckedChange={() => toggleMapPrivacy()}
       />

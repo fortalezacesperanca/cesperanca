@@ -3,32 +3,20 @@ import { useRef } from 'react';
 import { Outlet, ScrollRestoration } from 'react-router';
 import { useHashScroll, useScrollToTop } from '../routes/routes';
 
+export type OutletContext = {
+  pageRef: React.Ref<HTMLDivElement>;
+};
+
 export function GlobalPage() {
   const pageRef = useRef(null);
   useScrollToTop({ ref: pageRef });
   useHashScroll();
 
-  // const {
-  //   setPrivacyAccepted,
-  //   setPrivacyDeclined,
-  //   setPrivacyPostpone,
-  //   showPrivacyBanner,
-  // }: any = useConfigContext();
-
-  // const { key } = useLocation();
-
   return (
     <>
-      {/* <PrivacyModal
-        key={key}
-        onDecline={() => setPrivacyDeclined()}
-        onCancel={() => setPrivacyPostpone()}
-        onAccept={() => setPrivacyAccepted()}
-        open={showPrivacyBanner}
-      /> */}
-      <Box ref={pageRef}>
+      <Box>
         <ScrollRestoration />
-        <Outlet />
+        <Outlet context={{ pageRef }} />
       </Box>
     </>
   );
