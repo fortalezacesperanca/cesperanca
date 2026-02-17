@@ -41,8 +41,6 @@ export default function MapWidget() {
     `,
   );
 
-  console.log({ config });
-
   return (
     <Widget
       title="Onde estamos?"

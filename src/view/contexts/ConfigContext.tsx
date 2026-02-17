@@ -7,6 +7,7 @@ export type ConfigContextProps = {
   isMapPrivacyAccepted: boolean;
   acceptMapPrivacy: () => void;
   declineMapPrivacy: () => void;
+  toggleMapPrivacy: () => void;
 };
 
 export const ConfigContext = createContext<ConfigContextProps>(
@@ -66,10 +67,22 @@ export function ConfigProvider({ children }: { children: React.ReactNode }) {
     });
   }
 
+  function toggleMapPrivacy() {
+    setConfig((c) => {
+      if (c.privacy.map.consent == 'accepted') {
+        c.privacy.map.decline();
+      } else {
+        c.privacy.map.accept();
+      }
+      return c;
+    });
+  }
+
   const value = {
     isMapPrivacyAccepted,
     acceptMapPrivacy,
     declineMapPrivacy,
+    toggleMapPrivacy,
   };
   return (
     <ConfigContext.Provider value={value}>{children}</ConfigContext.Provider>

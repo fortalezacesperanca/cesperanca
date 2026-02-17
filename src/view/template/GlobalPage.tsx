@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import { useRef } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, ScrollRestoration } from 'react-router';
 import { useHashScroll, useScrollToTop } from '../routes/routes';
 
 export function GlobalPage() {
@@ -27,6 +27,7 @@ export function GlobalPage() {
         open={showPrivacyBanner}
       /> */}
       <Box ref={pageRef}>
+        <ScrollRestoration />
         <Outlet />
       </Box>
     </>

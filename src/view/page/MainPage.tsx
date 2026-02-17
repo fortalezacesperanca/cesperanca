@@ -8,7 +8,6 @@ import EventListWidget from '../widgets/Events/EventListWidget.tsx';
 import IntroWidget from '../widgets/Intro/IntroWidget.tsx';
 import MapWidget from '../widgets/Map/MapWidget.tsx';
 import PixWidgetV3 from '../widgets/Pix/PixWidgetV3.tsx';
-import QuoteWidget from '../widgets/QuoteWidget/QuoteWidget.tsx';
 import SlidesWidgetV2 from '../widgets/Slides/SlidesWidgetV2.tsx';
 import SocialsWidgetV3 from '../widgets/Socials/SocialsWidgetV3.tsx';
 
@@ -20,12 +19,6 @@ export default function MainPage() {
       </FlexContainer>
       <FlexContainer>
         <IntroWidget path="db/intro.json" />
-      </FlexContainer>
-      <FlexContainer justifyContent={'center'}>
-        <QuoteWidget
-          path="db/quotes.json"
-          index={0}
-        />
       </FlexContainer>
       <Flex
         gap={6}
