@@ -30,8 +30,13 @@ export const GroupListWidget = () => {
         }}
       >
         <If condition={groups.length > 0}>
-          {groups.map((item) => {
-            return <Group group={item}></Group>;
+          {groups.map((item, index) => {
+            return (
+              <Group
+                group={item}
+                key={index}
+              ></Group>
+            );
           })}
         </If>
       </SimpleGrid>
@@ -41,61 +46,57 @@ export const GroupListWidget = () => {
 
 export function Group({ group }: { group: UiModel.Group }) {
   return (
-    <>
-      <Box key={group.name}>
-        <Card.Root
-          flexDirection="column"
-          overflow="hidden"
-          rounded={'lg'}
-          shadow={'md'}
+    <Card.Root
+      flexDirection="column"
+      overflow="hidden"
+      rounded={'lg'}
+      shadow={'md'}
+      position={'relative'}
+      minH={'500px'}
+    >
+      <Box
+        position={'relative'}
+        w={'100%'}
+      >
+        <Box
           position={'relative'}
-          minH={'500px'}
+          overflow={'hidden'}
         >
-          <Box
-            position={'relative'}
-            w={'100%'}
-          >
-            <Box
-              position={'relative'}
-              overflow={'hidden'}
-            >
-              <Image
-                margin={'auto'}
-                src={group.image}
-                aspectRatio={16 / 9}
-              />
-            </Box>
-          </Box>
-          <Box>
-            <Card.Header>
-              <Box textAlign={'center'}>
-                <Card.Title>{group.name}</Card.Title>
-                <Card.Description
-                  textTransform={'capitalize'}
-                  color={'fg.muted'}
-                >
-                  {group.target}
-                </Card.Description>
-              </Box>
-            </Card.Header>
-            <Card.Body>
-              <InfoLine
-                text={group.dayOfWeek}
-                icon={<RiCalendar2Fill />}
-              />
-              <InfoLine
-                text={group.time}
-                icon={<RiTimeFill />}
-              />
-              <InfoLine
-                text={group.address}
-                icon={<RiMapPin2Fill />}
-              />
-              <Text>{group.description}</Text>
-            </Card.Body>
-          </Box>
-        </Card.Root>
+          <Image
+            margin={'auto'}
+            src={group.image}
+            aspectRatio={16 / 9}
+          />
+        </Box>
       </Box>
-    </>
+      <Box>
+        <Card.Header>
+          <Box textAlign={'center'}>
+            <Card.Title>{group.name}</Card.Title>
+            <Card.Description
+              textTransform={'capitalize'}
+              color={'fg.muted'}
+            >
+              {group.target}
+            </Card.Description>
+          </Box>
+        </Card.Header>
+        <Card.Body>
+          <InfoLine
+            text={group.dayOfWeek}
+            icon={<RiCalendar2Fill />}
+          />
+          <InfoLine
+            text={group.time}
+            icon={<RiTimeFill />}
+          />
+          <InfoLine
+            text={group.address}
+            icon={<RiMapPin2Fill />}
+          />
+          <Text>{group.description}</Text>
+        </Card.Body>
+      </Box>
+    </Card.Root>
   );
 }
