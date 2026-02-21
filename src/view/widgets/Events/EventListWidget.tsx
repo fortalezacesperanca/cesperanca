@@ -25,13 +25,11 @@ import { getUniqueEventURI, Routes } from '../../routes/routes';
 import { useEventListViewModel } from './Events.ViewModel';
 
 export default function EventListWidget({
-  json,
   showActionButton = true,
 }: {
-  json: string;
   showActionButton?: boolean;
 }) {
-  const { uiEvents } = useEventListViewModel({ json });
+  const { events } = useEventListViewModel();
 
   return (
     <Widget
@@ -51,12 +49,12 @@ export default function EventListWidget({
           xl: 1,
         }}
       >
-        <If condition={uiEvents.length == 0}>
+        <If condition={events.length == 0}>
           <Text>Ainda não há eventos. Acompanhe para não perder!</Text>
         </If>
-        <If condition={uiEvents.length > 0}>
+        <If condition={events.length > 0}>
           <List
-            list={uiEvents}
+            list={events}
             renderItem={(item, index) => {
               return (
                 <Event

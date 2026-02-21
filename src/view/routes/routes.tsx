@@ -43,7 +43,7 @@ export const createRouter = ({ basename }: { basename: string }) => {
               },
               {
                 path: `${Routes.EVENTS}/:eventURI`,
-                element: <EventPage json="db/events.json" />,
+                element: <EventPage />,
               },
               {
                 path: Routes.AGENDA,

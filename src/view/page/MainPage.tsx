@@ -28,7 +28,7 @@ export default function MainPage() {
           <AgendaWidget json="db/agenda_cultos.json" />
         </FlexContainer>
         <FlexContainer id={'events'}>
-          <EventListWidget json="db/events.json" />
+          <EventListWidget />
         </FlexContainer>
         <FlexContainer id="map">
           <MapWidget />

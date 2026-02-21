@@ -29,12 +29,12 @@ function InfoLine({ text, icon }: any) {
   );
 }
 
-export default function EventPage({ json }: any) {
+export default function EventPage() {
   const params = useParams();
 
   const [name] = params.eventURI!.split(':');
-  const { uiEvents } = useEventListViewModel({ json });
-  const event = uiEvents.find((e) => e.name == name);
+  const { events } = useEventListViewModel();
+  const event = events.find((e) => e.name == name);
 
   return (
     <Flex direction={'column'}>
