@@ -2,8 +2,8 @@ import { Box, Image } from '@chakra-ui/react';
 import { Slide, Slides } from '../../components/Slides';
 import { useImageJSON } from '../../hooks/useImage';
 
-export default function SlidesWidgetV2({ path }: { path: string }) {
-  const [images] = useImageJSON({ path });
+export default function SlidesWidgetV2() {
+  const [images] = useImageJSON({ path: 'db/slides.json' });
   if (images.length == 0) {
     return <></>;
   }
@@ -13,7 +13,7 @@ export default function SlidesWidgetV2({ path }: { path: string }) {
       position={'relative'}
       bg="transparent"
       top={{
-        base: '-24px',
+        // base: '-24px',
         md: 0,
       }}
     >

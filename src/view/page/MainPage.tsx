@@ -15,7 +15,7 @@ export default function MainPage() {
   return (
     <Flex direction={'column'}>
       <FlexContainer maxWidth={'full'}>
-        <SlidesWidgetV2 path={'db/slides.json'} />
+        <SlidesWidgetV2 />
       </FlexContainer>
       <FlexContainer>
         <IntroWidget path="db/intro.json" />

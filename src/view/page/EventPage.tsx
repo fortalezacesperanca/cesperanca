@@ -58,7 +58,7 @@ export default function EventPage() {
             <Flex direction={'column'}>
               <InfoLine text={event.description} />
               <InfoLine
-                text={event.date}
+                text={`${event.dayOfWeek}, ${event.date}`}
                 icon={<RiCalendar2Fill />}
               />
               <InfoLine

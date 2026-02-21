@@ -65,8 +65,8 @@ export namespace UiModel {
       this.name = domain.name;
       this.date = domain.date.formatWith('LL');
       this.day = domain.date.formatWith('DD');
-      this.dayOfWeek = domain.date.formatWith('ddd');
-      this.monthName = domain.date.formatWith('MMM');
+      this.dayOfWeek = domain.date.formatWith('dddd');
+      this.monthName = domain.date.formatWith('MMMM');
       this.time = domain.time.formatWith('HH:mm');
       this.image = domain.image;
       this.description = domain.description;

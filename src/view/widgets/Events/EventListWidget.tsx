@@ -137,19 +137,13 @@ export function Event({ event }: { event: UiModel.Event }) {
                   _light: 'primary.600',
                 }}
               >
-                {event.dayOfWeek}
+                {event.dayOfWeek.substring(0, 3)}
               </Box>
               <Box fontWeight={'medium'}>{event.day}</Box>
-              <Box fontWeight={'medium'}>{event.monthName}</Box>
+              <Box fontWeight={'medium'}>{event.monthName.substring(0, 3)}</Box>
             </Flex>
 
             <Card.Body
-              pt={
-                {
-                  // base: 0,
-                  // md: 6,
-                }
-              }
               className="card.body"
               flexDirection={'column'}
             >
@@ -164,6 +158,10 @@ export function Event({ event }: { event: UiModel.Event }) {
                 // p={6}
               >
                 <InfoLine text={event.description} />
+                <InfoLine
+                  text={`${event.dayOfWeek}, ${event.date}`}
+                  icon={<RiCalendar2Fill />}
+                />
                 <InfoLine
                   text={event.time}
                   icon={<RiTimeFill />}

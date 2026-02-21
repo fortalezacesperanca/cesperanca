@@ -108,11 +108,13 @@ export default function AgendaListWidget({
                       className="card.body.content"
                       flexGrow={1}
                     >
-                      <Card.Title mb={2}>{item.name}</Card.Title>
-                      <Box
-                        color={'fg'}
-                        fontSize={'sm'}
+                      <Card.Title
+                        mb={2}
+                        fontSize={'xl'}
                       >
+                        {item.name}
+                      </Card.Title>
+                      <Box color={'fg'}>
                         <InfoLine
                           text={`${item.dayOfWeek} - ${item.time}`}
                           icon={<RiTimeFill />}
