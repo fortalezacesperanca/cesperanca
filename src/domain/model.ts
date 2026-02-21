@@ -108,6 +108,15 @@ export namespace Model {
     }
   }
 
+  export class GroupMeta {
+    name: string;
+    description: string;
+
+    constructor(props: GroupMeta) {
+      Object.assign(this, props);
+    }
+  }
+
   export class Group {
     name: string;
     dayOfWeek: string;

@@ -1,14 +1,14 @@
 [
   {
     "name": "Noite de Vida",
-    "date": "01/02/2026",
+    "date": "01/03/2026",
     "time": "18:30",
     "description": "Evangelismo, Teatro, Louvor e Adoração",
     "longDescription": "",
     "address": "R. Chico Lemos, 547 - Cid. dos Funcionários, Fortaleza",
     "eventType": "common",
     "image": "images/noite-de-vida.jpg",
-    "isEnabled": false
+    "isEnabled": true
   },
   {
     "name": "Culto de Mulheres",

@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { Model } from '../../domain/model';
-import { JsonService } from '../../infra/services/json.service';
+import { JSONProvider } from '../../infra/services/json.provider';
 import { Datetime } from '../../view/util/date.util';
 import type { IUseCase } from '../iusecase';
 
@@ -17,7 +17,7 @@ export class LoadEventsUseCase
   execute(
     input: LoadEventsInput = { json: 'db/events.json' },
   ): LoadEventsOutput {
-    const service = JsonService.getInstance();
+    const service = JSONProvider.getInstance();
     let data = service.getByPath(input.json) as unknown as Array<any>;
     var events = data.map((item) => {
       /**
