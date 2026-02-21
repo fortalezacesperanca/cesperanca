@@ -1,4 +1,4 @@
-import type { EventType, Model } from './model';
+import type { EventType, Model } from '../../domain/model';
 
 export namespace UiModel {
   export class Group {

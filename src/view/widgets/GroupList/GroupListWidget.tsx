@@ -5,11 +5,11 @@ import {
   RiMapPin2Fill,
   RiTimeFill,
 } from 'react-icons/ri';
-import type { UiModel } from '../../../domain/uimodel';
 import If from '../../components/If';
 import { InfoLine } from '../../components/InfoLine';
 import { Widget } from '../../components/Widget';
-import { useGroupListViewModel } from './GroupListWidget.ViewModel';
+import type { UiModel } from '../../model/uimodel';
+import { useGroupListViewModel } from './Group.ViewModel';
 
 export const GroupListWidget = () => {
   const { groups, description, name } = useGroupListViewModel();

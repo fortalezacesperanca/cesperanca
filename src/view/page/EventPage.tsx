@@ -2,7 +2,7 @@ import { Box, Container, Flex, Heading, Icon, Text } from '@chakra-ui/react';
 import { RiCalendar2Fill, RiMapPin2Fill, RiTimeFill } from 'react-icons/ri';
 import { useParams } from 'react-router';
 import { Image } from '../components/Image';
-import { useEventListViewModel } from '../widgets/Events/Events.ViewModel';
+import { useEventListViewModel } from '../widgets/EventList/Event.ViewModel';
 
 function InfoLine({ text, icon }: any) {
   return (

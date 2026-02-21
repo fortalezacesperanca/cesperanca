@@ -15,14 +15,14 @@ import {
   RiTimeFill,
 } from 'react-icons/ri';
 import { Link } from 'react-router';
-import type { UiModel } from '../../../domain/uimodel';
 import If from '../../components/If';
 import { Image } from '../../components/Image';
 import { InfoLine } from '../../components/InfoLine';
 import { List } from '../../components/List';
 import { Widget } from '../../components/Widget';
+import type { UiModel } from '../../model/uimodel';
 import { getUniqueEventURI, Routes } from '../../routes/routes';
-import { useEventListViewModel } from './Events.ViewModel';
+import { useEventListViewModel } from './Event.ViewModel';
 
 export default function EventListWidget({
   showActionButton = true,
@@ -57,7 +57,7 @@ export default function EventListWidget({
             list={events}
             renderItem={(item, index) => {
               return (
-                <Event
+                <EventCard
                   key={index}
                   event={item}
                 />
@@ -70,7 +70,7 @@ export default function EventListWidget({
   );
 }
 
-export function Event({ event }: { event: UiModel.Event }) {
+export function EventCard({ event }: { event: UiModel.Event }) {
   return (
     <Box>
       <Card.Root

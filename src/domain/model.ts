@@ -147,6 +147,7 @@ export namespace Model {
     description: string;
     longDescription: string;
     eventType: EventType;
+    isEnabled: boolean;
 
     constructor(props: Agenda) {
       Object.assign(this, props);

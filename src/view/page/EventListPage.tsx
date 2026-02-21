@@ -1,5 +1,5 @@
 import { Container, Flex } from '@chakra-ui/react';
-import EventListWidget from '../widgets/Events/EventListWidget';
+import EventListWidget from '../widgets/EventList/EventListWidget';
 
 export default function EventListPage() {
   return (

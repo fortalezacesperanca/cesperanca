@@ -7,8 +7,8 @@ import { useJSON } from '../hooks/useJSON';
 import { BottomBarWidget } from '../widgets/BottomBar/BottomBarWidget';
 import { FooterWidget } from '../widgets/Footer/FooterWidget';
 import { HeaderWidget } from '../widgets/Header/HeaderWidget';
-import { NavigationMobileWidget } from '../widgets/Navigation/NavigationMobileWidget';
-import { NavigationDesktopWidget } from '../widgets/NavigationTop/NavigationDesktopWidget';
+import { NavigationDesktopWidget } from '../widgets/NavigationDesktop/NavigationDesktopWidget';
+import { NavigationMobileWidget } from '../widgets/NavigationMobile/NavigationMobileWidget';
 import type { OutletContext } from './GlobalPage';
 
 export const PageTemplate = () => {

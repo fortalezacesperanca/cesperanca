@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createBrowserRouter, useLocation } from 'react-router';
-import type { UiModel } from '../../domain/uimodel';
+import type { UiModel } from '../model/uimodel';
 import AgendaListPage from '../page/AgendaListPage';
 import AgendaPage from '../page/AgendaPage';
 import EventListPage from '../page/EventListPage';
@@ -51,7 +51,7 @@ export const createRouter = ({ basename }: { basename: string }) => {
               },
               {
                 path: `${Routes.AGENDA}/:agendaURI`,
-                element: <AgendaPage json="db/agenda_cultos.json" />,
+                element: <AgendaPage />,
               },
               {
                 path: Routes.GROUPS,

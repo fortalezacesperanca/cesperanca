@@ -3,13 +3,13 @@ import { RiTimeFill } from 'react-icons/ri';
 import { useParams } from 'react-router';
 import { Image } from '../components/Image';
 import { InfoLine } from '../components/InfoLine';
-import { useAgendaListViewModel } from '../widgets/Agenda/AgendaWidget.ViewModel';
+import { useAgendaListViewModel } from '../widgets/AgendaList/Agenda.ViewModel';
 
-export default function AgendaPage({ json }: any) {
+export default function AgendaPage() {
   const params = useParams();
 
   const [name] = params.agendaURI!.split(':');
-  const { uiAgenda } = useAgendaListViewModel({ json });
+  const { uiAgenda } = useAgendaListViewModel();
   const item = uiAgenda.find((e) => e.name == name);
 
   return (

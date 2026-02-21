@@ -2,9 +2,9 @@
 
 import { Flex } from '@chakra-ui/react';
 import { FlexContainer } from '../components/FlexContainer';
-import AgendaWidget from '../widgets/Agenda/AgendaListWidget.tsx';
+import AgendaWidget from '../widgets/AgendaList/AgendaListWidget.tsx';
 import ContactWidgetV3 from '../widgets/Contact/ContactWidgetV3.tsx';
-import EventListWidget from '../widgets/Events/EventListWidget.tsx';
+import EventListWidget from '../widgets/EventList/EventListWidget.tsx';
 import IntroWidget from '../widgets/Intro/IntroWidget.tsx';
 import MapWidget from '../widgets/Map/MapWidget.tsx';
 import PixWidgetV3 from '../widgets/Pix/PixWidgetV3.tsx';
@@ -25,7 +25,7 @@ export default function MainPage() {
         direction={'column'}
       >
         <FlexContainer id="agenda">
-          <AgendaWidget json="db/agenda_cultos.json" />
+          <AgendaWidget />
         </FlexContainer>
         <FlexContainer id={'events'}>
           <EventListWidget />

@@ -1,7 +1,7 @@
 import { Model } from '../../../domain/model';
-import { UiModel } from '../../../domain/uimodel';
 import { JSONService } from '../../../infra/services/json.provider';
 import { useAction } from '../../hooks/useAction';
+import { UiModel } from '../../model/uimodel';
 
 async function listEvents() {
   const s = new JSONService();
