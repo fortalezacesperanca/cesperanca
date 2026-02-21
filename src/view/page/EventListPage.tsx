@@ -6,10 +6,7 @@ export default function EventListPage() {
     <Flex direction={'column'}>
       <Flex>
         <Container>
-          <EventListWidget
-            json="db/events.json"
-            showActionButton={false}
-          />
+          <EventListWidget showActionButton={false} />
         </Container>
       </Flex>
     </Flex>
