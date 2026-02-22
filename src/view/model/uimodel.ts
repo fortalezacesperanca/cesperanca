@@ -28,6 +28,16 @@ export namespace UiModel {
       this.isEnabled = domain.isEnabled;
     }
   }
+
+  export class GroupMeta {
+    name: string;
+    description: string;
+
+    constructor(props: Model.GroupMeta) {
+      Object.assign(this, props);
+    }
+  }
+
   export class Agenda {
     dayOfWeek: string;
     time: string;

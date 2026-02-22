@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { JSONProvider } from '../../infra/services/json.provider';
+import { JSONService } from '../../infra/services/json.service';
 import { usePromise } from './usePromise';
 
 export function useJSON<T>({
@@ -9,7 +9,7 @@ export function useJSON<T>({
   json: string;
   defaultValue: any;
 }) {
-  var service = JSONProvider.getInstance();
+  var service = JSONService.getInstance();
   const [data, trigger, _] = usePromise<T>({
     fn: () => service.getByPath(json),
     defaultValue: defaultValue,
@@ -22,7 +22,7 @@ export function useJSON<T>({
   return [data];
 }
 export function useJSONData<T>(json: string, defaultValue: any) {
-  var service = JSONProvider.getInstance();
+  var service = JSONService.getInstance();
   const [data, trigger, _] = usePromise<T>({
     fn: () => service.getByPath(json),
     defaultValue: defaultValue,

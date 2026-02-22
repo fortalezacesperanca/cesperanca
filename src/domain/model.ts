@@ -112,7 +112,7 @@ export namespace Model {
     name: string;
     description: string;
 
-    constructor(props: GroupMeta) {
+    constructor(props: any) {
       Object.assign(this, props);
     }
   }

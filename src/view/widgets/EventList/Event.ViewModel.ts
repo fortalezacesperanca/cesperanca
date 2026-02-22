@@ -1,12 +1,12 @@
 import { Model } from '../../../domain/model';
-import { JSONService } from '../../../infra/services/json.provider';
+import { JSONService } from '../../../infra/services/json.service';
 import { useAction } from '../../hooks/useAction';
 import { UiModel } from '../../model/uimodel';
 
 async function listEvents() {
-  const s = new JSONService();
-  let events = s.getArray('db/events.json', Model.Event);
-
+  const s = JSONService.getInstance();
+  const raw = s.getByPath<any[]>('db/events.json');
+  let events = raw.map((i) => new Model.Event(i));
   events = events
     .sort((a, b) => {
       return a.date?.value.valueOf()! - b.date?.value.valueOf()!;
