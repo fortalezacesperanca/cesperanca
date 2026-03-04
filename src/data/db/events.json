@@ -1,5 +1,16 @@
 [
   {
+    "name": "Rede de Homens",
+    "date": "23/03/2026",
+    "time": "19:00",
+    "description": "Uma colheita de homens para Cristo",
+    "longDescription": "Um encontro especial para homens que desejam crescer em fé, fortalecer amizades e viver o propósito de Deus para suas vidas. Teremos futebol para integração e comunhão. Teremos churrasco, porque mesa é lugar de relacionamento e conexão. E teremos samba ministrando louvores a Deus, celebrando com alegria o nome do Senhor. Será um tempo de unidade, encorajamento e renovação espiritual. Um momento para homens se fortalecerem na Palavra e compartilharem experiências. Convide um amigo e venha fazer parte desse tempo conosco!",
+    "address": "Arena Braseiro, Rua Ferreira Lima, 381 - Dias Macêdo, Fortaleza",
+    "eventType": "common",
+    "image": "images/rede-de-homens-marco-2026.jpg",
+    "isEnabled": true
+  },
+  {
     "name": "Noite de Vida",
     "date": "01/03/2026",
     "time": "18:30",
@@ -8,7 +19,7 @@
     "address": "R. Chico Lemos, 547 - Cid. dos Funcionários, Fortaleza",
     "eventType": "common",
     "image": "images/noite-de-vida.jpg",
-    "isEnabled": true
+    "isEnabled": false
   },
   {
     "name": "Culto de Mulheres",
