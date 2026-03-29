@@ -92,18 +92,28 @@ export function EventCard({ event }: { event: UiModel.Event }) {
           >
             <Box
               className="card.image"
-              paddingRight={ {
+              padding={ {
                 base: 0,
-                md: 4,
+                md: 4
               } }
-              paddingBottom={ {
-                base: 0,
-                md: 0,
-              } }
+
+            // paddingLeft={ {
+            //   base: 0,
+            //   md: 4
+            // } }
+            // paddingRight={ {
+            //   base: 0,
+            //   md: 4,
+            // } }
+            // paddingBottom={ {
+            //   base: 0,
+            //   md: 0,
+            // } }
             >
               <Center height={ '100%' }>
                 <Image
                   alignSelf={ 'center' }
+                  shadow={ 'md' }
                   maxWidth={ {
                     base: '100%',
                     md: '400px',
