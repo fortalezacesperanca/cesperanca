@@ -7,6 +7,7 @@ import {
   Icon,
   SimpleGrid,
   Text,
+  type FlexProps,
 } from '@chakra-ui/react';
 import {
   RiArrowRightLine,
@@ -23,6 +24,7 @@ import { Widget } from '../../components/Widget';
 import type { UiModel } from '../../model/uimodel';
 import { getUniqueEventURI, Routes } from '../../routes/routes';
 import { useEventListViewModel } from './Event.ViewModel';
+import type { EventType } from '../../../domain/model';
 
 export default function EventListWidget({
   showActionButton = true,
@@ -33,36 +35,36 @@ export default function EventListWidget({
 
   return (
     <Widget
-      actionButtonText={'Ver todos os eventos'}
-      actionButtonLink={Routes.EVENTS}
-      showActionButton={showActionButton}
-      icon={<RiCalendar2Fill />}
+      actionButtonText={ 'Ver todos os eventos' }
+      actionButtonLink={ Routes.EVENTS }
+      showActionButton={ showActionButton }
+      icon={ <RiCalendar2Fill /> }
       title="Eventos"
     >
       <SimpleGrid
-        gap={6}
-        columns={{
+        gap={ 6 }
+        columns={ {
           base: 1,
           sm: 1,
           md: 1,
           lg: 1,
           xl: 1,
-        }}
+        } }
       >
-        <If condition={events.length == 0}>
+        <If condition={ events.length == 0 }>
           <Text>Ainda não há eventos. Acompanhe para não perder!</Text>
         </If>
-        <If condition={events.length > 0}>
+        <If condition={ events.length > 0 }>
           <List
-            list={events}
-            renderItem={(item, index) => {
+            list={ events }
+            renderItem={ (item, index) => {
               return (
                 <EventCard
-                  key={index}
-                  event={item}
+                  key={ index }
+                  event={ item }
                 />
               );
-            }}
+            } }
           />
         </If>
       </SimpleGrid>
@@ -76,109 +78,109 @@ export function EventCard({ event }: { event: UiModel.Event }) {
       <Card.Root
         flexDirection="row"
         overflow="hidden"
-        rounded={'lg'}
-        shadow={'md'}
+        rounded={ 'lg' }
+        shadow={ 'md' }
       >
-        <Flex width="full">
+        <Flex width="full" { ...styles(event.eventType) }>
           <Flex
             className="card.content"
             width="full"
-            flexDirection={{
+            flexDirection={ {
               base: 'column',
               md: 'row',
-            }}
+            } }
           >
             <Box
               className="card.image"
-              paddingRight={{
+              paddingRight={ {
                 base: 0,
                 md: 4,
-              }}
-              paddingBottom={{
+              } }
+              paddingBottom={ {
                 base: 0,
                 md: 0,
-              }}
+              } }
             >
-              <Center height={'100%'}>
+              <Center height={ '100%' }>
                 <Image
-                  alignSelf={'center'}
-                  maxWidth={{
+                  alignSelf={ 'center' }
+                  maxWidth={ {
                     base: '100%',
                     md: '400px',
-                  }}
-                  aspectRatio={16 / 9}
-                  src={event.image}
-                  alt={`${event.name} ${event.description}`}
+                  } }
+                  aspectRatio={ 16 / 9 }
+                  src={ event.image }
+                  alt={ `${event.name} ${event.description}` }
                 />
               </Center>
             </Box>
             <Flex
-              px={'4'}
-              direction={{
+              px={ '4' }
+              direction={ {
                 base: 'row',
                 md: 'column',
-              }}
-              justifyContent={'center'}
-              textAlign={'center'}
-              fontFamily={'FontHeading'}
-              fontWeight={'bold'}
-              fontSize={'3xl'}
-              color={{
+              } }
+              justifyContent={ 'center' }
+              textAlign={ 'center' }
+              fontFamily={ 'FontHeading' }
+              fontWeight={ 'bold' }
+              fontSize={ '3xl' }
+              color={ {
                 _dark: 'gray.300',
                 _light: 'gray.700',
-              }}
-              gap={2}
-              pt={{ base: '4', md: 0 }}
+              } }
+              gap={ 2 }
+              pt={ { base: '4', md: 0 } }
             >
               <Box
-                textTransform={'uppercase'}
-                color={{
+                textTransform={ 'uppercase' }
+                color={ {
                   _dark: 'gray.300',
                   _light: 'primary.600',
-                }}
+                } }
               >
-                {event.dayOfWeek.substring(0, 3)}
+                { event.dayOfWeek.substring(0, 3) }
               </Box>
-              <Box fontWeight={'medium'}>{event.day}</Box>
-              <Box fontWeight={'medium'}>{event.monthName.substring(0, 3)}</Box>
+              <Box fontWeight={ 'medium' }>{ event.day }</Box>
+              <Box fontWeight={ 'medium' }>{ event.monthName.substring(0, 3) }</Box>
             </Flex>
 
             <Card.Body
               className="card.body"
-              flexDirection={'column'}
+              flexDirection={ 'column' }
             >
               <Card.Title
-                mb={4}
-                fontSize={'xl'}
+                mb={ 4 }
+                fontSize={ 'xl' }
               >
-                {event.name}
+                { event.name }
               </Card.Title>
               <Box
-                color={'fg'}
-                // p={6}
+                color={ 'fg' }
+              // p={6}
               >
-                <InfoLine text={event.description} />
+                <InfoLine text={ event.description } />
                 <InfoLine
-                  text={`${event.dayOfWeek}, ${event.date}`}
-                  icon={<RiCalendar2Fill />}
+                  text={ `${event.dayOfWeek}, ${event.date}` }
+                  icon={ <RiCalendar2Fill /> }
                 />
                 <InfoLine
-                  text={event.time}
-                  icon={<RiTimeFill />}
+                  text={ event.time }
+                  icon={ <RiTimeFill /> }
                 />
                 <InfoLine
-                  text={event.address}
-                  icon={<RiMapPin2Fill />}
+                  text={ event.address }
+                  icon={ <RiMapPin2Fill /> }
                 />
-                <Flex justifyContent={'flex-end'}>
-                  <Link to={getUniqueEventURI(event)}>
+                <Flex justifyContent={ 'flex-end' }>
+                  <Link to={ getUniqueEventURI(event) }>
                     <Button
-                      size={'lg'}
-                      colorPalette={'primary'}
-                      fontWeight={'bold'}
-                      _hover={{
+                      size={ 'lg' }
+                      colorPalette={ 'primary' }
+                      fontWeight={ 'bold' }
+                      _hover={ {
                         textDecoration: 'underline',
-                      }}
+                      } }
                     >
                       Ver evento
                       <Icon>
@@ -195,3 +197,46 @@ export function EventCard({ event }: { event: UiModel.Event }) {
     </Box>
   );
 }
+
+
+const styles = (eventType: EventType) => {
+  const styleTypes: Record<EventType, FlexProps> = {
+    common: {
+      // bg: "primary.1",
+      // bgGradient: 'to-l',
+      // gradientFrom: 'white',
+      // gradientTo: 'primary.100',
+    },
+    variant: {
+      // bgGradient: 'to-tr',
+      // gradientFrom: 'aqua.600',
+      // gradientTo: 'aqua.400',
+    },
+    special: {
+      // bgGradient: 'to-tr',
+      // gradientFrom: 'red.600',
+      // gradientTo: 'red.400',
+    },
+    men: {
+      // bgGradient: 'to-tr',
+      // gradientFrom: 'blue.600',
+      // gradientTo: 'cyan.400',
+    },
+    women: {
+      // bgGradient: 'to-tr',
+      // gradientFrom: 'pink.600',
+      // gradientTo: 'pink.400',
+    },
+    teen: {
+      // bgGradient: 'to-tr',
+      // gradientFrom: 'purple.600',
+      // gradientTo: 'purple.400',
+    },
+    kids: {
+      // bgGradient: 'to-tr',
+      // gradientFrom: 'orange.600',
+      // gradientTo: 'yellow.500',
+    },
+  };
+  return styleTypes[eventType];
+};
