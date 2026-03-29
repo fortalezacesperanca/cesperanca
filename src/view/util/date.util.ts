@@ -16,8 +16,8 @@ dayjs.locale('pt-br');
  */
 export class Datetime {
   public value: Dayjs;
-  constructor(valueString: string = '', templateFormat: string = '') {
-    this.value = dayjs(valueString, templateFormat);
+  constructor(valueString: string = '', format: string = '') {
+    this.value = dayjs(valueString, format);
   }
   formatWith(templateFormat: string) {
     return this.value.format(templateFormat);

@@ -9,7 +9,7 @@ async function listEvents() {
   let events = raw.map((i) => new Model.Event(i));
   events = events
     .sort((a, b) => {
-      return a.date?.value.valueOf()! - b.date?.value.valueOf()!;
+      return a.date?.value.valueOf() - b.date?.value.valueOf();
     })
     .filter((event) => event.isEnabled);
 
@@ -20,7 +20,7 @@ async function listEvents() {
  * view
  */
 export const useEventListViewModel = () => {
-  var [events] = useAction(listEvents, []);
+  const [events] = useAction(listEvents, []);
 
   return { events };
 };

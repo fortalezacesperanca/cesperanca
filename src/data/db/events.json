@@ -1,5 +1,60 @@
 [
   {
+    "name": "Rede de Mulheres",
+    "date": "25/04/2026",
+    "time": "18:30",
+    "description": "",
+    "longDescription": "",
+    "address": "R. Chico Lemos, 547 - Cid. dos Funcionários, Fortaleza",
+    "eventType": "women",
+    "image": "images/abril-2026-rede-de-mulheres.jpg",
+    "isEnabled": true
+  },
+  {
+    "name": "Blitz Especial",
+    "date": "18/04/2026",
+    "time": "18:30",
+    "description": "",
+    "longDescription": "",
+    "address": "Aerolândia, Fortaleza",
+    "eventType": "common",
+    "image": "images/abril-2026-blitz-special.jpg",
+    "isEnabled": true
+  },
+  {
+    "name": "Jejum Coletivo",
+    "date": "11/04/2026",
+    "time": "7:00",
+    "description": "",
+    "longDescription": "",
+    "address": "Na casa do Pastor, Fortaleza",
+    "eventType": "common",
+    "image": "images/abril-2026-jejum-coletivo.jpg",
+    "isEnabled": true
+  },
+  {
+    "name": "Café com a Comunidade",
+    "date": "19/04/2026",
+    "time": "9:00",
+    "description": "Um convite especial para conhecer a nossa igreja",
+    "longDescription": "",
+    "address": "R. Chico Lemos, 547 - Cid. dos Funcionários, Fortaleza",
+    "eventType": "common",
+    "image": "images/abril-2026-cafe-com-a-comunidade.jpg",
+    "isEnabled": true
+  },
+  {
+    "name": "Noite de Vida",
+    "date": "12/04/2026",
+    "time": "18:30",
+    "description": "Um convite para um tempo de qualidade com Deus",
+    "longDescription": "",
+    "address": "R. Chico Lemos, 547 - Cid. dos Funcionários, Fortaleza",
+    "eventType": "common",
+    "image": "images/abril-2026-noite-de-vida.jpg",
+    "isEnabled": true
+  },
+  {
     "name": "Rede de Homens",
     "date": "23/03/2026",
     "time": "19:00",
@@ -8,7 +63,7 @@
     "address": "Arena Braseiro, Rua Ferreira Lima, 381 - Dias Macêdo, Fortaleza",
     "eventType": "common",
     "image": "images/rede-de-homens-marco-2026.jpg",
-    "isEnabled": true
+    "isEnabled": false
   },
   {
     "name": "Noite de Vida",
